@@ -36,3 +36,10 @@ build/
 **/mvnw
 **/mvnw.cmd
 **/src/test/
+**/README.md
+**/LICENSE
+
+**/Dockerfile
+**/docker-compose.yml
+
+**/.gitignore
