@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: productService
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        namespace: 9cc6ad94-41f6-465e-8e99-59f832b31a94
