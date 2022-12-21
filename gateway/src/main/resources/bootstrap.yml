@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        namespace: 9cc6ad94-41f6-465e-8e99-59f832b31a94
+      config:
+        namespace: 9cc6ad94-41f6-465e-8e99-59f832b31a94
+        prefix: gateway
+        file-extension: yaml
+        refresh-enabled: true
