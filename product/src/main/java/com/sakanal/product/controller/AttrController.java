@@ -5,6 +5,7 @@ import com.sakanal.common.utils.R;
 import com.sakanal.product.entity.AttrEntity;
 import com.sakanal.product.service.AttrService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -19,6 +20,7 @@ import java.util.Map;
  * @email sakanal9527@gmail.com
  * @date 2022-12-21 12:40:44
  */
+@RefreshScope
 @RestController
 @RequestMapping("product/attr")
 public class AttrController {

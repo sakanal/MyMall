@@ -1,19 +1,15 @@
 package com.sakanal.product.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.sakanal.product.entity.SpuInfoEntity;
-import com.sakanal.product.service.SpuInfoService;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
+import com.sakanal.product.entity.SpuInfoEntity;
+import com.sakanal.product.service.SpuInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.Map;
 
 
 
@@ -24,6 +20,7 @@ import com.sakanal.common.utils.R;
  * @email sakanal9527@gmail.com
  * @date 2022-12-21 12:40:44
  */
+@RefreshScope
 @RestController
 @RequestMapping("product/spuinfo")
 public class SpuInfoController {

@@ -1,19 +1,15 @@
 package com.sakanal.coupon.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.sakanal.coupon.entity.SkuLadderEntity;
-import com.sakanal.coupon.service.SkuLadderService;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
+import com.sakanal.coupon.entity.SkuLadderEntity;
+import com.sakanal.coupon.service.SkuLadderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.Map;
 
 
 
@@ -24,6 +20,7 @@ import com.sakanal.common.utils.R;
  * @email sakanal9527@gmail.com
  * @date 2022-12-21 13:36:06
  */
+@RefreshScope
 @RestController
 @RequestMapping("coupon/skuladder")
 public class SkuLadderController {

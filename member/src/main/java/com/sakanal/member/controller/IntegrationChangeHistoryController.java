@@ -5,6 +5,7 @@ import com.sakanal.common.utils.R;
 import com.sakanal.member.entity.IntegrationChangeHistoryEntity;
 import com.sakanal.member.service.IntegrationChangeHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -19,6 +20,7 @@ import java.util.Map;
  * @email sakanal9527@gmail.com
  * @date 2022-12-21 13:40:02
  */
+@RefreshScope
 @RestController
 @RequestMapping("member/integrationchangehistory")
 public class IntegrationChangeHistoryController {
