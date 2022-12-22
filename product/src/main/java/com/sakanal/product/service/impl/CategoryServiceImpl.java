@@ -10,7 +10,11 @@ import com.sakanal.product.entity.CategoryEntity;
 import com.sakanal.product.service.CategoryService;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 @Service("categoryService")
@@ -20,10 +24,48 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<CategoryEntity> page = this.page(
                 new Query<CategoryEntity>().getPage(params),
-                new QueryWrapper<CategoryEntity>()
+                new QueryWrapper<>()
         );
 
         return new PageUtils(page);
     }
+
+    @Override
+    public List<CategoryEntity> listWithTree() {
+        // 1 查出所有分类
+        List<CategoryEntity> all = baseMapper.selectList(null);
+        // 2 组装成父子的树形结构
+        return all.stream()
+                //先获取顶层父类，ParentCid为0
+                .filter(categoryEntity -> categoryEntity.getParentCid() == 0)
+                //对获取到的父类进行组装，将它的子类放入
+                .peek((categoryEntity)-> categoryEntity.setChildren(getChildren(categoryEntity,all)))
+                //对结果排序
+                .sorted(Comparator.comparingInt(menu -> (menu.getSort() == null ? 0 : menu.getSort())))
+                //搜集最终结果转为List
+                .collect(Collectors.toList());
+    }
+    // 递归查找所有菜单的子菜单
+    private List<CategoryEntity> getChildren(CategoryEntity root, List<CategoryEntity> all) {
+        return all.stream()
+                //找到当前父节点对应的所有子节点
+                .filter(categoryEntity -> Objects.equals(categoryEntity.getParentCid(), root.getCatId()))
+                //对获取到的父类进行组装，将它的子类放入
+                .peek(categoryEntity -> categoryEntity.setChildren(getChildren(categoryEntity, all)))
+                //对结果排序
+                .sorted(Comparator.comparingInt(categoryEntity -> (categoryEntity.getSort() == null ? 0 : categoryEntity.getSort())))
+                //搜集最终结果转为List
+                .collect(Collectors.toList());
+    }
+
+
+    @Override
+    public int removeCategoryByIds(List<Long> asList) {
+        // TODO 1 检查当前删除的菜单，是否被别的地方引用
+
+        // 逻辑删除
+        return baseMapper.deleteBatchIds(asList);
+    }
+
 
 }
