@@ -323,13 +323,15 @@ export default {
     // 批量删除
     batchDelete () {
       let catIds = []
+      let categoryNames = []
       let checkedNodes = this.$refs.categoryTree.getCheckedNodes()
       console.log('被选中的元素', checkedNodes)
       for (let i = 0; i < checkedNodes.length; i++) {
         catIds.push(checkedNodes[i].catId)
+        categoryNames.push(checkedNodes[i].name)
       }
 
-      this.$confirm(`是否批量删除【${catIds}】菜单?`, '提示', {
+      this.$confirm(`是否批量删除【${categoryNames}】菜单?`, '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
