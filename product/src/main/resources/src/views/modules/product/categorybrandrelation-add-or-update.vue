@@ -4,11 +4,11 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-    <el-form-item label="Ʒ??id" prop="brandId">
-      <el-input v-model="dataForm.brandId" placeholder="Ʒ??id"></el-input>
+    <el-form-item label="品牌id" prop="brandId">
+      <el-input v-model="dataForm.brandId" placeholder="品牌id"></el-input>
     </el-form-item>
-    <el-form-item label="????id" prop="catelogId">
-      <el-input v-model="dataForm.catelogId" placeholder="????id"></el-input>
+    <el-form-item label="分类id" prop="catelogId">
+      <el-input v-model="dataForm.catelogId" placeholder="分类id"></el-input>
     </el-form-item>
     <el-form-item label="" prop="brandName">
       <el-input v-model="dataForm.brandName" placeholder=""></el-input>
@@ -38,10 +38,10 @@
         },
         dataRule: {
           brandId: [
-            { required: true, message: 'Ʒ??id不能为空', trigger: 'blur' }
+            { required: true, message: '品牌id不能为空', trigger: 'blur' }
           ],
           catelogId: [
-            { required: true, message: '????id不能为空', trigger: 'blur' }
+            { required: true, message: '分类id不能为空', trigger: 'blur' }
           ],
           brandName: [
             { required: true, message: '不能为空', trigger: 'blur' }

@@ -32,37 +32,37 @@
         prop="spuId"
         header-align="center"
         align="center"
-        label="??Ʒid">
+        label="商品id">
       </el-table-column>
       <el-table-column
         prop="attrId"
         header-align="center"
         align="center"
-        label="????id">
+        label="属性id">
       </el-table-column>
       <el-table-column
         prop="attrName"
         header-align="center"
         align="center"
-        label="?????">
+        label="属性名">
       </el-table-column>
       <el-table-column
         prop="attrValue"
         header-align="center"
         align="center"
-        label="????ֵ">
+        label="属性值">
       </el-table-column>
       <el-table-column
         prop="attrSort"
         header-align="center"
         align="center"
-        label="˳?">
+        label="顺序">
       </el-table-column>
       <el-table-column
         prop="quickShow"
         header-align="center"
         align="center"
-        label="????չʾ???Ƿ?չʾ?ڽ????ϣ?0-?? 1-?ǡ?">
+        label="快速展示【是否展示在介绍上；0-否 1-是】">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -91,9 +91,9 @@
 </template>
 
 <script>
-  import AddOrUpdate from './'
+import AddOrUpdate from './'
 
-  export default {
+export default {
     data () {
       return {
         dataForm: {

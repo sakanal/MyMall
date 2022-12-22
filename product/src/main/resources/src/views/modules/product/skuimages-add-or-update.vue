@@ -7,14 +7,14 @@
     <el-form-item label="sku_id" prop="skuId">
       <el-input v-model="dataForm.skuId" placeholder="sku_id"></el-input>
     </el-form-item>
-    <el-form-item label="ͼƬ??ַ" prop="imgUrl">
-      <el-input v-model="dataForm.imgUrl" placeholder="ͼƬ??ַ"></el-input>
+    <el-form-item label="图片地址" prop="imgUrl">
+      <el-input v-model="dataForm.imgUrl" placeholder="图片地址"></el-input>
     </el-form-item>
-    <el-form-item label="???" prop="imgSort">
-      <el-input v-model="dataForm.imgSort" placeholder="???"></el-input>
+    <el-form-item label="排序" prop="imgSort">
+      <el-input v-model="dataForm.imgSort" placeholder="排序"></el-input>
     </el-form-item>
-    <el-form-item label="Ĭ??ͼ[0 - ????Ĭ??ͼ??1 - ??Ĭ??ͼ]" prop="defaultImg">
-      <el-input v-model="dataForm.defaultImg" placeholder="Ĭ??ͼ[0 - ????Ĭ??ͼ??1 - ??Ĭ??ͼ]"></el-input>
+    <el-form-item label="默认图[0 - 不是默认图，1 - 是默认图]" prop="defaultImg">
+      <el-input v-model="dataForm.defaultImg" placeholder="默认图[0 - 不是默认图，1 - 是默认图]"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -41,13 +41,13 @@
             { required: true, message: 'sku_id不能为空', trigger: 'blur' }
           ],
           imgUrl: [
-            { required: true, message: 'ͼƬ??ַ不能为空', trigger: 'blur' }
+            { required: true, message: '图片地址不能为空', trigger: 'blur' }
           ],
           imgSort: [
-            { required: true, message: '???不能为空', trigger: 'blur' }
+            { required: true, message: '排序不能为空', trigger: 'blur' }
           ],
           defaultImg: [
-            { required: true, message: 'Ĭ??ͼ[0 - ????Ĭ??ͼ??1 - ??Ĭ??ͼ]不能为空', trigger: 'blur' }
+            { required: true, message: '默认图[0 - 不是默认图，1 - 是默认图]不能为空', trigger: 'blur' }
           ]
         }
       }

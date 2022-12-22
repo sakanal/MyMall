@@ -4,23 +4,23 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-    <el-form-item label="Ʒ???" prop="name">
-      <el-input v-model="dataForm.name" placeholder="Ʒ???"></el-input>
+    <el-form-item label="品牌名" prop="name">
+      <el-input v-model="dataForm.name" placeholder="品牌名"></el-input>
     </el-form-item>
-    <el-form-item label="Ʒ??logo??ַ" prop="logo">
-      <el-input v-model="dataForm.logo" placeholder="Ʒ??logo??ַ"></el-input>
+    <el-form-item label="品牌logo地址" prop="logo">
+      <el-input v-model="dataForm.logo" placeholder="品牌logo地址"></el-input>
     </el-form-item>
-    <el-form-item label="???" prop="descript">
-      <el-input v-model="dataForm.descript" placeholder="???"></el-input>
+    <el-form-item label="介绍" prop="descript">
+      <el-input v-model="dataForm.descript" placeholder="介绍"></el-input>
     </el-form-item>
-    <el-form-item label="??ʾ״̬[0-????ʾ??1-??ʾ]" prop="showStatus">
-      <el-input v-model="dataForm.showStatus" placeholder="??ʾ״̬[0-????ʾ??1-??ʾ]"></el-input>
+    <el-form-item label="显示状态[0-不显示；1-显示]" prop="showStatus">
+      <el-input v-model="dataForm.showStatus" placeholder="显示状态[0-不显示；1-显示]"></el-input>
     </el-form-item>
-    <el-form-item label="????????ĸ" prop="firstLetter">
-      <el-input v-model="dataForm.firstLetter" placeholder="????????ĸ"></el-input>
+    <el-form-item label="检索首字母" prop="firstLetter">
+      <el-input v-model="dataForm.firstLetter" placeholder="检索首字母"></el-input>
     </el-form-item>
-    <el-form-item label="???" prop="sort">
-      <el-input v-model="dataForm.sort" placeholder="???"></el-input>
+    <el-form-item label="排序" prop="sort">
+      <el-input v-model="dataForm.sort" placeholder="排序"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -46,22 +46,22 @@
         },
         dataRule: {
           name: [
-            { required: true, message: 'Ʒ???不能为空', trigger: 'blur' }
+            { required: true, message: '品牌名不能为空', trigger: 'blur' }
           ],
           logo: [
-            { required: true, message: 'Ʒ??logo??ַ不能为空', trigger: 'blur' }
+            { required: true, message: '品牌logo地址不能为空', trigger: 'blur' }
           ],
           descript: [
-            { required: true, message: '???不能为空', trigger: 'blur' }
+            { required: true, message: '介绍不能为空', trigger: 'blur' }
           ],
           showStatus: [
-            { required: true, message: '??ʾ״̬[0-????ʾ??1-??ʾ]不能为空', trigger: 'blur' }
+            { required: true, message: '显示状态[0-不显示；1-显示]不能为空', trigger: 'blur' }
           ],
           firstLetter: [
-            { required: true, message: '????????ĸ不能为空', trigger: 'blur' }
+            { required: true, message: '检索首字母不能为空', trigger: 'blur' }
           ],
           sort: [
-            { required: true, message: '???不能为空', trigger: 'blur' }
+            { required: true, message: '排序不能为空', trigger: 'blur' }
           ]
         }
       }

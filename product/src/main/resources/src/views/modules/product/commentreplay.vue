@@ -32,13 +32,13 @@
         prop="commentId"
         header-align="center"
         align="center"
-        label="????id">
+        label="评论id">
       </el-table-column>
       <el-table-column
         prop="replyId"
         header-align="center"
         align="center"
-        label="?ظ?id">
+        label="回复id">
       </el-table-column>
       <el-table-column
         fixed="right"

@@ -44,79 +44,79 @@
         prop="spuName"
         header-align="center"
         align="center"
-        label="??Ʒ?">
+        label="商品名字">
       </el-table-column>
       <el-table-column
         prop="memberNickName"
         header-align="center"
         align="center"
-        label="??Ա?ǳ">
+        label="会员昵称">
       </el-table-column>
       <el-table-column
         prop="star"
         header-align="center"
         align="center"
-        label="?Ǽ?">
+        label="星级">
       </el-table-column>
       <el-table-column
         prop="memberIp"
         header-align="center"
         align="center"
-        label="??Աip">
+        label="会员ip">
       </el-table-column>
       <el-table-column
         prop="createTime"
         header-align="center"
         align="center"
-        label="????ʱ?">
+        label="创建时间">
       </el-table-column>
       <el-table-column
         prop="showStatus"
         header-align="center"
         align="center"
-        label="??ʾ״̬[0-????ʾ??1-??ʾ]">
+        label="显示状态[0-不显示，1-显示]">
       </el-table-column>
       <el-table-column
         prop="spuAttributes"
         header-align="center"
         align="center"
-        label="????ʱ???????">
+        label="购买时属性组合">
       </el-table-column>
       <el-table-column
         prop="likesCount"
         header-align="center"
         align="center"
-        label="?????">
+        label="点赞数">
       </el-table-column>
       <el-table-column
         prop="replyCount"
         header-align="center"
         align="center"
-        label="?ظ??">
+        label="回复数">
       </el-table-column>
       <el-table-column
         prop="resources"
         header-align="center"
         align="center"
-        label="????ͼƬ/??Ƶ[json???ݣ?[{type:?ļ?????,url:??Դ·??}]]">
+        label="评论图片/视频[json数据；[{type:文件类型,url:资源路径}]]">
       </el-table-column>
       <el-table-column
         prop="content"
         header-align="center"
         align="center"
-        label="???">
+        label="内容">
       </el-table-column>
       <el-table-column
         prop="memberIcon"
         header-align="center"
         align="center"
-        label="?û?ͷ?">
+        label="用户头像">
       </el-table-column>
       <el-table-column
         prop="commentType"
         header-align="center"
         align="center"
-        label="????????[0 - ????Ʒ??ֱ?????ۣ?1 - ?????۵Ļظ?]">
+        label="评论类型[0 - 对商品的直接评论，1 - 对评论的回复]">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -145,9 +145,9 @@
 </template>
 
 <script>
-  import AddOrUpdate from './'
+import AddOrUpdate from './'
 
-  export default {
+export default {
     data () {
       return {
         dataForm: {

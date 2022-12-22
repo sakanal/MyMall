@@ -10,14 +10,14 @@
     <el-form-item label="attr_id" prop="attrId">
       <el-input v-model="dataForm.attrId" placeholder="attr_id"></el-input>
     </el-form-item>
-    <el-form-item label="?????????" prop="attrName">
-      <el-input v-model="dataForm.attrName" placeholder="?????????"></el-input>
+    <el-form-item label="销售属性名" prop="attrName">
+      <el-input v-model="dataForm.attrName" placeholder="销售属性名"></el-input>
     </el-form-item>
-    <el-form-item label="????????ֵ" prop="attrValue">
-      <el-input v-model="dataForm.attrValue" placeholder="????????ֵ"></el-input>
+    <el-form-item label="销售属性值" prop="attrValue">
+      <el-input v-model="dataForm.attrValue" placeholder="销售属性值"></el-input>
     </el-form-item>
-    <el-form-item label="˳?" prop="attrSort">
-      <el-input v-model="dataForm.attrSort" placeholder="˳?"></el-input>
+    <el-form-item label="顺序" prop="attrSort">
+      <el-input v-model="dataForm.attrSort" placeholder="顺序"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -48,13 +48,13 @@
             { required: true, message: 'attr_id不能为空', trigger: 'blur' }
           ],
           attrName: [
-            { required: true, message: '?????????不能为空', trigger: 'blur' }
+            { required: true, message: '销售属性名不能为空', trigger: 'blur' }
           ],
           attrValue: [
-            { required: true, message: '????????ֵ不能为空', trigger: 'blur' }
+            { required: true, message: '销售属性值不能为空', trigger: 'blur' }
           ],
           attrSort: [
-            { required: true, message: '˳?不能为空', trigger: 'blur' }
+            { required: true, message: '顺序不能为空', trigger: 'blur' }
           ]
         }
       }

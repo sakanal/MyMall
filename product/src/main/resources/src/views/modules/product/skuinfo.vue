@@ -38,55 +38,55 @@
         prop="skuName"
         header-align="center"
         align="center"
-        label="sku?">
+        label="sku名称">
       </el-table-column>
       <el-table-column
         prop="skuDesc"
         header-align="center"
         align="center"
-        label="sku???????">
+        label="sku介绍描述">
       </el-table-column>
       <el-table-column
         prop="catalogId"
         header-align="center"
         align="center"
-        label="????????id">
+        label="所属分类id">
       </el-table-column>
       <el-table-column
         prop="brandId"
         header-align="center"
         align="center"
-        label="Ʒ??id">
+        label="品牌id">
       </el-table-column>
       <el-table-column
         prop="skuDefaultImg"
         header-align="center"
         align="center"
-        label="Ĭ??ͼƬ">
+        label="默认图片">
       </el-table-column>
       <el-table-column
         prop="skuTitle"
         header-align="center"
         align="center"
-        label="???">
+        label="标题">
       </el-table-column>
       <el-table-column
         prop="skuSubtitle"
         header-align="center"
         align="center"
-        label="?????">
+        label="副标题">
       </el-table-column>
       <el-table-column
         prop="price"
         header-align="center"
         align="center"
-        label="?۸">
+        label="价格">
       </el-table-column>
       <el-table-column
         prop="saleCount"
         header-align="center"
         align="center"
-        label="?">
+        label="销量">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -115,9 +115,9 @@
 </template>
 
 <script>
-  import AddOrUpdate from './'
+import AddOrUpdate from './'
 
-  export default {
+export default {
     data () {
       return {
         dataForm: {

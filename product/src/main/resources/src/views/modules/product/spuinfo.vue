@@ -26,31 +26,31 @@
         prop="id"
         header-align="center"
         align="center"
-        label="??Ʒid">
+        label="商品id">
       </el-table-column>
       <el-table-column
         prop="spuName"
         header-align="center"
         align="center"
-        label="??Ʒ?">
+        label="商品名称">
       </el-table-column>
       <el-table-column
         prop="spuDescription"
         header-align="center"
         align="center"
-        label="??Ʒ???">
+        label="商品描述">
       </el-table-column>
       <el-table-column
         prop="catalogId"
         header-align="center"
         align="center"
-        label="????????id">
+        label="所属分类id">
       </el-table-column>
       <el-table-column
         prop="brandId"
         header-align="center"
         align="center"
-        label="Ʒ??id">
+        label="品牌id">
       </el-table-column>
       <el-table-column
         prop="weight"
@@ -62,7 +62,7 @@
         prop="publishStatus"
         header-align="center"
         align="center"
-        label="?ϼ?״̬[0 - ?¼ܣ?1 - ?ϼ?]">
+        label="上架状态[0 - 下架，1 - 上架]">
       </el-table-column>
       <el-table-column
         prop="createTime"
@@ -103,9 +103,9 @@
 </template>
 
 <script>
-  import AddOrUpdate from './'
+import AddOrUpdate from './'
 
-  export default {
+export default {
     data () {
       return {
         dataForm: {

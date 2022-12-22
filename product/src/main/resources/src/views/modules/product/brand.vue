@@ -26,43 +26,43 @@
         prop="brandId"
         header-align="center"
         align="center"
-        label="Ʒ??id">
+        label="品牌id">
       </el-table-column>
       <el-table-column
         prop="name"
         header-align="center"
         align="center"
-        label="Ʒ???">
+        label="品牌名">
       </el-table-column>
       <el-table-column
         prop="logo"
         header-align="center"
         align="center"
-        label="Ʒ??logo??ַ">
+        label="品牌logo地址">
       </el-table-column>
       <el-table-column
         prop="descript"
         header-align="center"
         align="center"
-        label="???">
+        label="介绍">
       </el-table-column>
       <el-table-column
         prop="showStatus"
         header-align="center"
         align="center"
-        label="??ʾ״̬[0-????ʾ??1-??ʾ]">
+        label="显示状态[0-不显示；1-显示]">
       </el-table-column>
       <el-table-column
         prop="firstLetter"
         header-align="center"
         align="center"
-        label="????????ĸ">
+        label="检索首字母">
       </el-table-column>
       <el-table-column
         prop="sort"
         header-align="center"
         align="center"
-        label="???">
+        label="排序">
       </el-table-column>
       <el-table-column
         fixed="right"

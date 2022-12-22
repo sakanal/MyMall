@@ -26,37 +26,37 @@
         prop="attrGroupId"
         header-align="center"
         align="center"
-        label="????id">
+        label="分组id">
       </el-table-column>
       <el-table-column
         prop="attrGroupName"
         header-align="center"
         align="center"
-        label="???">
+        label="组名">
       </el-table-column>
       <el-table-column
         prop="sort"
         header-align="center"
         align="center"
-        label="???">
+        label="排序">
       </el-table-column>
       <el-table-column
         prop="descript"
         header-align="center"
         align="center"
-        label="???">
+        label="描述">
       </el-table-column>
       <el-table-column
         prop="icon"
         header-align="center"
         align="center"
-        label="??ͼ?">
+        label="组图标">
       </el-table-column>
       <el-table-column
         prop="catelogId"
         header-align="center"
         align="center"
-        label="????????id">
+        label="所属分类id">
       </el-table-column>
       <el-table-column
         fixed="right"

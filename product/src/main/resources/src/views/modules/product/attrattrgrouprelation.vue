@@ -32,19 +32,19 @@
         prop="attrId"
         header-align="center"
         align="center"
-        label="????id">
+        label="属性id">
       </el-table-column>
       <el-table-column
         prop="attrGroupId"
         header-align="center"
         align="center"
-        label="???Է???id">
+        label="属性分组id">
       </el-table-column>
       <el-table-column
         prop="attrSort"
         header-align="center"
         align="center"
-        label="???????????">
+        label="属性组内排序">
       </el-table-column>
       <el-table-column
         fixed="right"

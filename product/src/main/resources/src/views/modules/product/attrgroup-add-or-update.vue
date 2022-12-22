@@ -4,20 +4,20 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-    <el-form-item label="???" prop="attrGroupName">
-      <el-input v-model="dataForm.attrGroupName" placeholder="???"></el-input>
+    <el-form-item label="组名" prop="attrGroupName">
+      <el-input v-model="dataForm.attrGroupName" placeholder="组名"></el-input>
     </el-form-item>
-    <el-form-item label="???" prop="sort">
-      <el-input v-model="dataForm.sort" placeholder="???"></el-input>
+    <el-form-item label="排序" prop="sort">
+      <el-input v-model="dataForm.sort" placeholder="排序"></el-input>
     </el-form-item>
-    <el-form-item label="???" prop="descript">
-      <el-input v-model="dataForm.descript" placeholder="???"></el-input>
+    <el-form-item label="描述" prop="descript">
+      <el-input v-model="dataForm.descript" placeholder="描述"></el-input>
     </el-form-item>
-    <el-form-item label="??ͼ?" prop="icon">
-      <el-input v-model="dataForm.icon" placeholder="??ͼ?"></el-input>
+    <el-form-item label="组图标" prop="icon">
+      <el-input v-model="dataForm.icon" placeholder="组图标"></el-input>
     </el-form-item>
-    <el-form-item label="????????id" prop="catelogId">
-      <el-input v-model="dataForm.catelogId" placeholder="????????id"></el-input>
+    <el-form-item label="所属分类id" prop="catelogId">
+      <el-input v-model="dataForm.catelogId" placeholder="所属分类id"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -42,19 +42,19 @@
         },
         dataRule: {
           attrGroupName: [
-            { required: true, message: '???不能为空', trigger: 'blur' }
+            { required: true, message: '组名不能为空', trigger: 'blur' }
           ],
           sort: [
-            { required: true, message: '???不能为空', trigger: 'blur' }
+            { required: true, message: '排序不能为空', trigger: 'blur' }
           ],
           descript: [
-            { required: true, message: '???不能为空', trigger: 'blur' }
+            { required: true, message: '描述不能为空', trigger: 'blur' }
           ],
           icon: [
-            { required: true, message: '??ͼ?不能为空', trigger: 'blur' }
+            { required: true, message: '组图标不能为空', trigger: 'blur' }
           ],
           catelogId: [
-            { required: true, message: '????????id不能为空', trigger: 'blur' }
+            { required: true, message: '所属分类id不能为空', trigger: 'blur' }
           ]
         }
       }

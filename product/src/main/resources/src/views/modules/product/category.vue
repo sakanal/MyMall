@@ -26,55 +26,55 @@
         prop="catId"
         header-align="center"
         align="center"
-        label="????id">
+        label="分类id">
       </el-table-column>
       <el-table-column
         prop="name"
         header-align="center"
         align="center"
-        label="?????">
+        label="分类名称">
       </el-table-column>
       <el-table-column
         prop="parentCid"
         header-align="center"
         align="center"
-        label="??????id">
+        label="父分类id">
       </el-table-column>
       <el-table-column
         prop="catLevel"
         header-align="center"
         align="center"
-        label="?㼶">
+        label="层级">
       </el-table-column>
       <el-table-column
         prop="showStatus"
         header-align="center"
         align="center"
-        label="?Ƿ???ʾ[0-????ʾ??1??ʾ]">
+        label="是否显示[0-不显示，1显示]">
       </el-table-column>
       <el-table-column
         prop="sort"
         header-align="center"
         align="center"
-        label="???">
+        label="排序">
       </el-table-column>
       <el-table-column
         prop="icon"
         header-align="center"
         align="center"
-        label="ͼ????ַ">
+        label="图标地址">
       </el-table-column>
       <el-table-column
         prop="productUnit"
         header-align="center"
         align="center"
-        label="??????λ">
+        label="计量单位">
       </el-table-column>
       <el-table-column
         prop="productCount"
         header-align="center"
         align="center"
-        label="??Ʒ?">
+        label="商品数量">
       </el-table-column>
       <el-table-column
         fixed="right"

@@ -4,11 +4,11 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-    <el-form-item label="????id" prop="commentId">
-      <el-input v-model="dataForm.commentId" placeholder="????id"></el-input>
+    <el-form-item label="评论id" prop="commentId">
+      <el-input v-model="dataForm.commentId" placeholder="评论id"></el-input>
     </el-form-item>
-    <el-form-item label="?ظ?id" prop="replyId">
-      <el-input v-model="dataForm.replyId" placeholder="?ظ?id"></el-input>
+    <el-form-item label="回复id" prop="replyId">
+      <el-input v-model="dataForm.replyId" placeholder="回复id"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -30,10 +30,10 @@
         },
         dataRule: {
           commentId: [
-            { required: true, message: '????id不能为空', trigger: 'blur' }
+            { required: true, message: '评论id不能为空', trigger: 'blur' }
           ],
           replyId: [
-            { required: true, message: '?ظ?id不能为空', trigger: 'blur' }
+            { required: true, message: '回复id不能为空', trigger: 'blur' }
           ]
         }
       }

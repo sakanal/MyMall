@@ -26,55 +26,55 @@
         prop="attrId"
         header-align="center"
         align="center"
-        label="????id">
+        label="属性id">
       </el-table-column>
       <el-table-column
         prop="attrName"
         header-align="center"
         align="center"
-        label="?????">
+        label="属性名">
       </el-table-column>
       <el-table-column
         prop="searchType"
         header-align="center"
         align="center"
-        label="?Ƿ???Ҫ????[0-????Ҫ??1-??Ҫ]">
+        label="是否需要检索[0-不需要，1-需要]">
       </el-table-column>
       <el-table-column
         prop="icon"
         header-align="center"
         align="center"
-        label="????ͼ?">
+        label="属性图标">
       </el-table-column>
       <el-table-column
         prop="valueSelect"
         header-align="center"
         align="center"
-        label="??ѡֵ?б?[?ö??ŷָ">
+        label="可选值列表[用逗号分隔]">
       </el-table-column>
       <el-table-column
         prop="attrType"
         header-align="center"
         align="center"
-        label="????????[0-???????ԣ?1-???????ԣ?2-???????????????ǻ???????]">
+        label="属性类型[0-销售属性，1-基本属性，2-既是销售属性又是基本属性]">
       </el-table-column>
       <el-table-column
         prop="enable"
         header-align="center"
         align="center"
-        label="????״̬[0 - ???ã?1 - ????]">
+        label="启用状态[0 - 禁用，1 - 启用]">
       </el-table-column>
       <el-table-column
         prop="catelogId"
         header-align="center"
         align="center"
-        label="???????">
+        label="所属分类">
       </el-table-column>
       <el-table-column
         prop="showDesc"
         header-align="center"
         align="center"
-        label="????չʾ???Ƿ?չʾ?ڽ????ϣ?0-?? 1-?ǡ?????sku????Ȼ???Ե">
+        label="快速展示【是否展示在介绍上；0-否 1-是】，在sku中仍然可以调整">
       </el-table-column>
       <el-table-column
         fixed="right"

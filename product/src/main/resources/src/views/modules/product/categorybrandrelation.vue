@@ -32,13 +32,13 @@
         prop="brandId"
         header-align="center"
         align="center"
-        label="Ʒ??id">
+        label="品牌id">
       </el-table-column>
       <el-table-column
         prop="catelogId"
         header-align="center"
         align="center"
-        label="????id">
+        label="分类id">
       </el-table-column>
       <el-table-column
         prop="brandName"

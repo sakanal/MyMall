@@ -44,19 +44,19 @@
         prop="attrName"
         header-align="center"
         align="center"
-        label="?????????">
+        label="销售属性名">
       </el-table-column>
       <el-table-column
         prop="attrValue"
         header-align="center"
         align="center"
-        label="????????ֵ">
+        label="销售属性值">
       </el-table-column>
       <el-table-column
         prop="attrSort"
         header-align="center"
         align="center"
-        label="˳?">
+        label="顺序">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -85,9 +85,9 @@
 </template>
 
 <script>
-  import AddOrUpdate from './'
+import AddOrUpdate from './'
 
-  export default {
+export default {
     data () {
       return {
         dataForm: {

@@ -4,23 +4,23 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-    <el-form-item label="??Ʒid" prop="spuId">
-      <el-input v-model="dataForm.spuId" placeholder="??Ʒid"></el-input>
+    <el-form-item label="商品id" prop="spuId">
+      <el-input v-model="dataForm.spuId" placeholder="商品id"></el-input>
     </el-form-item>
-    <el-form-item label="????id" prop="attrId">
-      <el-input v-model="dataForm.attrId" placeholder="????id"></el-input>
+    <el-form-item label="属性id" prop="attrId">
+      <el-input v-model="dataForm.attrId" placeholder="属性id"></el-input>
     </el-form-item>
-    <el-form-item label="?????" prop="attrName">
-      <el-input v-model="dataForm.attrName" placeholder="?????"></el-input>
+    <el-form-item label="属性名" prop="attrName">
+      <el-input v-model="dataForm.attrName" placeholder="属性名"></el-input>
     </el-form-item>
-    <el-form-item label="????ֵ" prop="attrValue">
-      <el-input v-model="dataForm.attrValue" placeholder="????ֵ"></el-input>
+    <el-form-item label="属性值" prop="attrValue">
+      <el-input v-model="dataForm.attrValue" placeholder="属性值"></el-input>
     </el-form-item>
-    <el-form-item label="˳?" prop="attrSort">
-      <el-input v-model="dataForm.attrSort" placeholder="˳?"></el-input>
+    <el-form-item label="顺序" prop="attrSort">
+      <el-input v-model="dataForm.attrSort" placeholder="顺序"></el-input>
     </el-form-item>
-    <el-form-item label="????չʾ???Ƿ?չʾ?ڽ????ϣ?0-?? 1-?ǡ?" prop="quickShow">
-      <el-input v-model="dataForm.quickShow" placeholder="????չʾ???Ƿ?չʾ?ڽ????ϣ?0-?? 1-?ǡ?"></el-input>
+    <el-form-item label="快速展示【是否展示在介绍上；0-否 1-是】" prop="quickShow">
+      <el-input v-model="dataForm.quickShow" placeholder="快速展示【是否展示在介绍上；0-否 1-是】"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -46,22 +46,22 @@
         },
         dataRule: {
           spuId: [
-            { required: true, message: '??Ʒid不能为空', trigger: 'blur' }
+            { required: true, message: '商品id不能为空', trigger: 'blur' }
           ],
           attrId: [
-            { required: true, message: '????id不能为空', trigger: 'blur' }
+            { required: true, message: '属性id不能为空', trigger: 'blur' }
           ],
           attrName: [
-            { required: true, message: '?????不能为空', trigger: 'blur' }
+            { required: true, message: '属性名不能为空', trigger: 'blur' }
           ],
           attrValue: [
-            { required: true, message: '????ֵ不能为空', trigger: 'blur' }
+            { required: true, message: '属性值不能为空', trigger: 'blur' }
           ],
           attrSort: [
-            { required: true, message: '˳?不能为空', trigger: 'blur' }
+            { required: true, message: '顺序不能为空', trigger: 'blur' }
           ],
           quickShow: [
-            { required: true, message: '????չʾ???Ƿ?չʾ?ڽ????ϣ?0-?? 1-?ǡ?不能为空', trigger: 'blur' }
+            { required: true, message: '快速展示【是否展示在介绍上；0-否 1-是】不能为空', trigger: 'blur' }
           ]
         }
       }

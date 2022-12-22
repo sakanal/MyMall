@@ -7,17 +7,17 @@
     <el-form-item label="spu_id" prop="spuId">
       <el-input v-model="dataForm.spuId" placeholder="spu_id"></el-input>
     </el-form-item>
-    <el-form-item label="ͼƬ?" prop="imgName">
-      <el-input v-model="dataForm.imgName" placeholder="ͼƬ?"></el-input>
+    <el-form-item label="图片名" prop="imgName">
+      <el-input v-model="dataForm.imgName" placeholder="图片名"></el-input>
     </el-form-item>
-    <el-form-item label="ͼƬ??ַ" prop="imgUrl">
-      <el-input v-model="dataForm.imgUrl" placeholder="ͼƬ??ַ"></el-input>
+    <el-form-item label="图片地址" prop="imgUrl">
+      <el-input v-model="dataForm.imgUrl" placeholder="图片地址"></el-input>
     </el-form-item>
-    <el-form-item label="˳?" prop="imgSort">
-      <el-input v-model="dataForm.imgSort" placeholder="˳?"></el-input>
+    <el-form-item label="顺序" prop="imgSort">
+      <el-input v-model="dataForm.imgSort" placeholder="顺序"></el-input>
     </el-form-item>
-    <el-form-item label="?Ƿ?Ĭ??ͼ" prop="defaultImg">
-      <el-input v-model="dataForm.defaultImg" placeholder="?Ƿ?Ĭ??ͼ"></el-input>
+    <el-form-item label="是否默认图" prop="defaultImg">
+      <el-input v-model="dataForm.defaultImg" placeholder="是否默认图"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -45,16 +45,16 @@
             { required: true, message: 'spu_id不能为空', trigger: 'blur' }
           ],
           imgName: [
-            { required: true, message: 'ͼƬ?不能为空', trigger: 'blur' }
+            { required: true, message: '图片名不能为空', trigger: 'blur' }
           ],
           imgUrl: [
-            { required: true, message: 'ͼƬ??ַ不能为空', trigger: 'blur' }
+            { required: true, message: '图片地址不能为空', trigger: 'blur' }
           ],
           imgSort: [
-            { required: true, message: '˳?不能为空', trigger: 'blur' }
+            { required: true, message: '顺序不能为空', trigger: 'blur' }
           ],
           defaultImg: [
-            { required: true, message: '?Ƿ?Ĭ??ͼ不能为空', trigger: 'blur' }
+            { required: true, message: '是否默认图不能为空', trigger: 'blur' }
           ]
         }
       }

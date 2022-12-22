@@ -4,23 +4,23 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-    <el-form-item label="??Ʒ?" prop="spuName">
-      <el-input v-model="dataForm.spuName" placeholder="??Ʒ?"></el-input>
+    <el-form-item label="商品名称" prop="spuName">
+      <el-input v-model="dataForm.spuName" placeholder="商品名称"></el-input>
     </el-form-item>
-    <el-form-item label="??Ʒ???" prop="spuDescription">
-      <el-input v-model="dataForm.spuDescription" placeholder="??Ʒ???"></el-input>
+    <el-form-item label="商品描述" prop="spuDescription">
+      <el-input v-model="dataForm.spuDescription" placeholder="商品描述"></el-input>
     </el-form-item>
-    <el-form-item label="????????id" prop="catalogId">
-      <el-input v-model="dataForm.catalogId" placeholder="????????id"></el-input>
+    <el-form-item label="所属分类id" prop="catalogId">
+      <el-input v-model="dataForm.catalogId" placeholder="所属分类id"></el-input>
     </el-form-item>
-    <el-form-item label="Ʒ??id" prop="brandId">
-      <el-input v-model="dataForm.brandId" placeholder="Ʒ??id"></el-input>
+    <el-form-item label="品牌id" prop="brandId">
+      <el-input v-model="dataForm.brandId" placeholder="品牌id"></el-input>
     </el-form-item>
     <el-form-item label="" prop="weight">
       <el-input v-model="dataForm.weight" placeholder=""></el-input>
     </el-form-item>
-    <el-form-item label="?ϼ?״̬[0 - ?¼ܣ?1 - ?ϼ?]" prop="publishStatus">
-      <el-input v-model="dataForm.publishStatus" placeholder="?ϼ?״̬[0 - ?¼ܣ?1 - ?ϼ?]"></el-input>
+    <el-form-item label="上架状态[0 - 下架，1 - 上架]" prop="publishStatus">
+      <el-input v-model="dataForm.publishStatus" placeholder="上架状态[0 - 下架，1 - 上架]"></el-input>
     </el-form-item>
     <el-form-item label="" prop="createTime">
       <el-input v-model="dataForm.createTime" placeholder=""></el-input>
@@ -54,22 +54,22 @@
         },
         dataRule: {
           spuName: [
-            { required: true, message: '??Ʒ?不能为空', trigger: 'blur' }
+            { required: true, message: '商品名称不能为空', trigger: 'blur' }
           ],
           spuDescription: [
-            { required: true, message: '??Ʒ???不能为空', trigger: 'blur' }
+            { required: true, message: '商品描述不能为空', trigger: 'blur' }
           ],
           catalogId: [
-            { required: true, message: '????????id不能为空', trigger: 'blur' }
+            { required: true, message: '所属分类id不能为空', trigger: 'blur' }
           ],
           brandId: [
-            { required: true, message: 'Ʒ??id不能为空', trigger: 'blur' }
+            { required: true, message: '品牌id不能为空', trigger: 'blur' }
           ],
           weight: [
             { required: true, message: '不能为空', trigger: 'blur' }
           ],
           publishStatus: [
-            { required: true, message: '?ϼ?״̬[0 - ?¼ܣ?1 - ?ϼ?]不能为空', trigger: 'blur' }
+            { required: true, message: '上架状态[0 - 下架，1 - 上架]不能为空', trigger: 'blur' }
           ],
           createTime: [
             { required: true, message: '不能为空', trigger: 'blur' }

@@ -4,8 +4,8 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-    <el-form-item label="??Ʒ???" prop="decript">
-      <el-input v-model="dataForm.decript" placeholder="??Ʒ???"></el-input>
+    <el-form-item label="商品介绍" prop="decript">
+      <el-input v-model="dataForm.decript" placeholder="商品介绍"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -26,7 +26,7 @@
         },
         dataRule: {
           decript: [
-            { required: true, message: '??Ʒ???不能为空', trigger: 'blur' }
+            { required: true, message: '商品介绍不能为空', trigger: 'blur' }
           ]
         }
       }

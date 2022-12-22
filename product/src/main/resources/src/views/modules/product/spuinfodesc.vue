@@ -26,13 +26,13 @@
         prop="spuId"
         header-align="center"
         align="center"
-        label="??Ʒid">
+        label="商品id">
       </el-table-column>
       <el-table-column
         prop="decript"
         header-align="center"
         align="center"
-        label="??Ʒ???">
+        label="商品介绍">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -61,9 +61,9 @@
 </template>
 
 <script>
-  import AddOrUpdate from './'
+import AddOrUpdate from './'
 
-  export default {
+export default {
     data () {
       return {
         dataForm: {

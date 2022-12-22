@@ -4,29 +4,29 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-    <el-form-item label="?????" prop="attrName">
-      <el-input v-model="dataForm.attrName" placeholder="?????"></el-input>
+    <el-form-item label="属性名" prop="attrName">
+      <el-input v-model="dataForm.attrName" placeholder="属性名"></el-input>
     </el-form-item>
-    <el-form-item label="?Ƿ???Ҫ????[0-????Ҫ??1-??Ҫ]" prop="searchType">
-      <el-input v-model="dataForm.searchType" placeholder="?Ƿ???Ҫ????[0-????Ҫ??1-??Ҫ]"></el-input>
+    <el-form-item label="是否需要检索[0-不需要，1-需要]" prop="searchType">
+      <el-input v-model="dataForm.searchType" placeholder="是否需要检索[0-不需要，1-需要]"></el-input>
     </el-form-item>
-    <el-form-item label="????ͼ?" prop="icon">
-      <el-input v-model="dataForm.icon" placeholder="????ͼ?"></el-input>
+    <el-form-item label="属性图标" prop="icon">
+      <el-input v-model="dataForm.icon" placeholder="属性图标"></el-input>
     </el-form-item>
-    <el-form-item label="??ѡֵ?б?[?ö??ŷָ" prop="valueSelect">
-      <el-input v-model="dataForm.valueSelect" placeholder="??ѡֵ?б?[?ö??ŷָ"></el-input>
+    <el-form-item label="可选值列表[用逗号分隔]" prop="valueSelect">
+      <el-input v-model="dataForm.valueSelect" placeholder="可选值列表[用逗号分隔]"></el-input>
     </el-form-item>
-    <el-form-item label="????????[0-???????ԣ?1-???????ԣ?2-???????????????ǻ???????]" prop="attrType">
-      <el-input v-model="dataForm.attrType" placeholder="????????[0-???????ԣ?1-???????ԣ?2-???????????????ǻ???????]"></el-input>
+    <el-form-item label="属性类型[0-销售属性，1-基本属性，2-既是销售属性又是基本属性]" prop="attrType">
+      <el-input v-model="dataForm.attrType" placeholder="属性类型[0-销售属性，1-基本属性，2-既是销售属性又是基本属性]"></el-input>
     </el-form-item>
-    <el-form-item label="????״̬[0 - ???ã?1 - ????]" prop="enable">
-      <el-input v-model="dataForm.enable" placeholder="????״̬[0 - ???ã?1 - ????]"></el-input>
+    <el-form-item label="启用状态[0 - 禁用，1 - 启用]" prop="enable">
+      <el-input v-model="dataForm.enable" placeholder="启用状态[0 - 禁用，1 - 启用]"></el-input>
     </el-form-item>
-    <el-form-item label="???????" prop="catelogId">
-      <el-input v-model="dataForm.catelogId" placeholder="???????"></el-input>
+    <el-form-item label="所属分类" prop="catelogId">
+      <el-input v-model="dataForm.catelogId" placeholder="所属分类"></el-input>
     </el-form-item>
-    <el-form-item label="????չʾ???Ƿ?չʾ?ڽ????ϣ?0-?? 1-?ǡ?????sku????Ȼ???Ե" prop="showDesc">
-      <el-input v-model="dataForm.showDesc" placeholder="????չʾ???Ƿ?չʾ?ڽ????ϣ?0-?? 1-?ǡ?????sku????Ȼ???Ե"></el-input>
+    <el-form-item label="快速展示【是否展示在介绍上；0-否 1-是】，在sku中仍然可以调整" prop="showDesc">
+      <el-input v-model="dataForm.showDesc" placeholder="快速展示【是否展示在介绍上；0-否 1-是】，在sku中仍然可以调整"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -54,28 +54,28 @@
         },
         dataRule: {
           attrName: [
-            { required: true, message: '?????不能为空', trigger: 'blur' }
+            { required: true, message: '属性名不能为空', trigger: 'blur' }
           ],
           searchType: [
-            { required: true, message: '?Ƿ???Ҫ????[0-????Ҫ??1-??Ҫ]不能为空', trigger: 'blur' }
+            { required: true, message: '是否需要检索[0-不需要，1-需要]不能为空', trigger: 'blur' }
           ],
           icon: [
-            { required: true, message: '????ͼ?不能为空', trigger: 'blur' }
+            { required: true, message: '属性图标不能为空', trigger: 'blur' }
           ],
           valueSelect: [
-            { required: true, message: '??ѡֵ?б?[?ö??ŷָ不能为空', trigger: 'blur' }
+            { required: true, message: '可选值列表[用逗号分隔]不能为空', trigger: 'blur' }
           ],
           attrType: [
-            { required: true, message: '????????[0-???????ԣ?1-???????ԣ?2-???????????????ǻ???????]不能为空', trigger: 'blur' }
+            { required: true, message: '属性类型[0-销售属性，1-基本属性，2-既是销售属性又是基本属性]不能为空', trigger: 'blur' }
           ],
           enable: [
-            { required: true, message: '????״̬[0 - ???ã?1 - ????]不能为空', trigger: 'blur' }
+            { required: true, message: '启用状态[0 - 禁用，1 - 启用]不能为空', trigger: 'blur' }
           ],
           catelogId: [
-            { required: true, message: '???????不能为空', trigger: 'blur' }
+            { required: true, message: '所属分类不能为空', trigger: 'blur' }
           ],
           showDesc: [
-            { required: true, message: '????չʾ???Ƿ?չʾ?ڽ????ϣ?0-?? 1-?ǡ?????sku????Ȼ???Ե不能为空', trigger: 'blur' }
+            { required: true, message: '快速展示【是否展示在介绍上；0-否 1-是】，在sku中仍然可以调整不能为空', trigger: 'blur' }
           ]
         }
       }

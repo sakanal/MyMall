@@ -38,19 +38,19 @@
         prop="imgUrl"
         header-align="center"
         align="center"
-        label="ͼƬ??ַ">
+        label="图片地址">
       </el-table-column>
       <el-table-column
         prop="imgSort"
         header-align="center"
         align="center"
-        label="???">
+        label="排序">
       </el-table-column>
       <el-table-column
         prop="defaultImg"
         header-align="center"
         align="center"
-        label="Ĭ??ͼ[0 - ????Ĭ??ͼ??1 - ??Ĭ??ͼ]">
+        label="默认图[0 - 不是默认图，1 - 是默认图]">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -79,9 +79,9 @@
 </template>
 
 <script>
-  import AddOrUpdate from './'
+import AddOrUpdate from './'
 
-  export default {
+export default {
     data () {
       return {
         dataForm: {
