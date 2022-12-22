@@ -270,6 +270,7 @@ export default {
       }
       // 3 当前拖拽节点的最新层级
       console.log('updateNodes', this.updateNodes)
+      this.maxLevel = 0
     },
     // 子节点层级递归修改
     updateChildNodeLevel (node) {
@@ -287,7 +288,7 @@ export default {
     // 判断是否能够拖动节点==>最终拖动结果的总层级不能大于3，否则不允许拖动
     allowDrop (draggingNode, dropNode, type) {
       // 被拖动的当前节点以及所在的父节点总层数不能大于3
-      // console.log('allowDrop:', draggingNode, dropNode, type)
+      console.log('allowDrop:', draggingNode, dropNode, type)
        // var level = this.countNodeLevel(draggingNode)
       // 判断被拖动的当前节点最深层级，如果没有子节点，则最深层级为本身，否则通过递归计算最深层级
       if (draggingNode.childNodes != null && draggingNode.childNodes.length > 0) {
@@ -295,10 +296,10 @@ export default {
       } else {
         this.maxLevel = draggingNode.level
       }
-      // console.log(this.maxLevel, draggingNode.level)
+      console.log(this.maxLevel, draggingNode.level)
       // 当前正在拖动的节点+父节点所在的深度不大于3即可
       let deep = Math.abs(this.maxLevel - draggingNode.level) + 1
-      // console.log('该节点深度:', deep)
+      console.log('该节点深度:', deep)
       // this.maxLevel
       if (type === 'inner') {
         return deep + dropNode.level <= 3
