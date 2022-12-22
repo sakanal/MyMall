@@ -30,7 +30,7 @@ public class BrandController {
     /**
      * 列表
      */
-    @RequestMapping("a")
+    @RequestMapping("list")
     //@RequiresPermissions("product:brand:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = brandService.queryPage(params);
