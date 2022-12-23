@@ -10,10 +10,7 @@ import com.sakanal.product.entity.CategoryEntity;
 import com.sakanal.product.service.CategoryService;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -65,6 +62,20 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
         // 逻辑删除
         return baseMapper.deleteBatchIds(asList);
+    }
+
+    @Override
+    public Long[] findCatelogPath(Long catelogId) {
+        List<Long> CatelogPath = new ArrayList<>();
+        findParentPath(catelogId,CatelogPath);
+        return CatelogPath.toArray(new Long[0]);
+    }
+    private void findParentPath(Long catelogId, List<Long> CatelogPath){
+        CategoryEntity category = this.getById(catelogId);
+        if (category.getParentCid() != 0){
+            findParentPath(category.getParentCid(),CatelogPath);
+        }
+        CatelogPath.add(catelogId);
     }
 
 

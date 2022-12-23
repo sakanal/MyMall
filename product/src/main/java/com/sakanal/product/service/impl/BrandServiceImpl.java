@@ -9,6 +9,7 @@ import com.sakanal.product.dao.BrandDao;
 import com.sakanal.product.entity.BrandEntity;
 import com.sakanal.product.service.BrandService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Map;
 
@@ -18,10 +19,12 @@ public class BrandServiceImpl extends ServiceImpl<BrandDao, BrandEntity> impleme
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
-        IPage<BrandEntity> page = this.page(
-                new Query<BrandEntity>().getPage(params),
-                new QueryWrapper<BrandEntity>()
-        );
+        String searchKey = (String) params.get("key");
+        QueryWrapper<BrandEntity> queryWrapper = new QueryWrapper<>();
+        if (StringUtils.hasText(searchKey)){
+            queryWrapper.eq("brand_id", searchKey).or().like("name",searchKey);
+        }
+        IPage<BrandEntity> page = this.page(new Query<BrandEntity>().getPage(params),queryWrapper);
 
         return new PageUtils(page);
     }
