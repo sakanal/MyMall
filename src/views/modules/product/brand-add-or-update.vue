@@ -46,9 +46,10 @@ export default {
       }
     }
     let checkSort = (rule, value, callback) => {
+      let sort = parseInt(value)
       if (value === '') {
         callback(new Error('排序字段必须填写'))
-      } else if (!Number.isInteger(value) || value < 0) {
+      } else if (sort < 0) {
         callback(new Error('排序必须是一个大于等于0的整数'))
       } else {
         callback()
