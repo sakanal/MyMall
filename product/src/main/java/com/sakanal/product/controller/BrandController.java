@@ -2,10 +2,15 @@ package com.sakanal.product.controller;
 
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
+import com.sakanal.common.validator.group.AddGroup;
+import com.sakanal.common.validator.group.UpdateGroup;
+import com.sakanal.common.validator.group.UpdateShowStatusGroup;
 import com.sakanal.product.entity.BrandEntity;
 import com.sakanal.product.service.BrandService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -20,6 +25,7 @@ import java.util.Map;
  * @email sakanal9527@gmail.com
  * @date 2022-12-21 12:40:44
  */
+@Slf4j
 @RefreshScope
 @RestController
 @RequestMapping("product/brand")
@@ -55,7 +61,7 @@ public class BrandController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("product:brand:save")
-    public R save(@RequestBody BrandEntity brand){
+    public R save(@Validated({AddGroup.class}) @RequestBody BrandEntity brand){
 		brandService.save(brand);
 
         return R.ok();
@@ -66,8 +72,19 @@ public class BrandController {
      */
     @RequestMapping("/update")
     //@RequiresPermissions("product:brand:update")
-    public R update(@RequestBody BrandEntity brand){
+    public R update(@Validated({UpdateGroup.class}) @RequestBody BrandEntity brand){
 		brandService.updateById(brand);
+
+        return R.ok();
+    }
+    /**
+     * 修改显示状态
+     */
+    @RequestMapping("/update/showStatus")
+    //@RequiresPermissions("product:brand:update")
+    public R updateShowStatus(@Validated({UpdateShowStatusGroup.class}) @RequestBody BrandEntity brand){
+        boolean result = brandService.updateById(brand);
+        log.info(String.valueOf(result));
 
         return R.ok();
     }
