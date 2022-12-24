@@ -7,8 +7,11 @@ import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.Query;
 import com.sakanal.product.dao.CategoryDao;
 import com.sakanal.product.entity.CategoryEntity;
+import com.sakanal.product.service.CategoryBrandRelationService;
 import com.sakanal.product.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -16,6 +19,9 @@ import java.util.stream.Collectors;
 
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
+
+    @Autowired
+    CategoryBrandRelationService categoryBrandRelationService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -70,6 +76,18 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         findParentPath(catelogId,CatelogPath);
         return CatelogPath.toArray(new Long[0]);
     }
+
+    @Transactional
+    @Override
+    public void updateDetail(CategoryEntity category) {
+        this.updateById(category);
+        if (!category.getName().isEmpty()) {
+            categoryBrandRelationService.updateCategory(category.getCatId(), category.getName());
+
+            // TODO 更新其他关联
+        }
+    }
+
     private void findParentPath(Long catelogId, List<Long> CatelogPath){
         CategoryEntity category = this.getById(catelogId);
         if (category.getParentCid() != 0){

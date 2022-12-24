@@ -1,8 +1,12 @@
 package com.sakanal.product.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.sakanal.product.entity.AttrAttrgroupRelationEntity;
 import com.sakanal.product.entity.AttrGroupEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * 属性分组
@@ -14,4 +18,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface AttrGroupDao extends BaseMapper<AttrGroupEntity> {
 
+    void deleteBatchRelation(@Param("entities") List<AttrAttrgroupRelationEntity> relationEntityList);
 }

@@ -3,6 +3,7 @@ package com.sakanal.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.product.entity.AttrGroupEntity;
+import com.sakanal.product.vo.AttrGroupRelationVo;
 
 import java.util.Map;
 
@@ -17,5 +18,7 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
     PageUtils queryPage(Map<String, Object> params,Long catelogId);
+
+    void deleteRelation(AttrGroupRelationVo[] attrGroupRelationVos);
 }
 

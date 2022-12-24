@@ -6,13 +6,19 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.Query;
 import com.sakanal.product.dao.AttrGroupDao;
+import com.sakanal.product.entity.AttrAttrgroupRelationEntity;
 import com.sakanal.product.entity.AttrGroupEntity;
 import com.sakanal.product.service.AttrGroupService;
+import com.sakanal.product.vo.AttrGroupRelationVo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service("attrGroupService")
@@ -57,6 +63,16 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
 //            return new PageUtils(page);
 //        }
 
+    }
+
+    @Override
+    public void deleteRelation(AttrGroupRelationVo[] attrGroupRelationVos) {
+        List<AttrAttrgroupRelationEntity> relationEntityList = Arrays.asList(attrGroupRelationVos).stream().map(attrGroupRelationVo -> {
+            AttrAttrgroupRelationEntity attrAttrgroupRelationEntity = new AttrAttrgroupRelationEntity();
+            BeanUtils.copyProperties(attrGroupRelationVo, attrAttrgroupRelationEntity);
+            return attrAttrgroupRelationEntity;
+        }).collect(Collectors.toList());
+        baseMapper.deleteBatchRelation(relationEntityList);
     }
 
 

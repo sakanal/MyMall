@@ -2,14 +2,19 @@ package com.sakanal.product.controller;
 
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
+import com.sakanal.product.entity.AttrEntity;
 import com.sakanal.product.entity.AttrGroupEntity;
+import com.sakanal.product.service.AttrAttrgroupRelationService;
 import com.sakanal.product.service.AttrGroupService;
+import com.sakanal.product.service.AttrService;
 import com.sakanal.product.service.CategoryService;
+import com.sakanal.product.vo.AttrGroupRelationVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -27,6 +32,10 @@ import java.util.Map;
 public class AttrGroupController {
     @Autowired
     private AttrGroupService attrGroupService;
+    @Autowired
+    private AttrAttrgroupRelationService relationService;
+    @Autowired
+    private AttrService attrService;
     @Autowired
     private CategoryService categoryService;
 
@@ -91,5 +100,29 @@ public class AttrGroupController {
 
         return R.ok();
     }
+    @GetMapping("/{attrgroupId}/attr/relation")
+    public R attrRelation(@PathVariable("attrgroupId") Long attrgroupId) {
+        List<AttrEntity> entities = attrService.getRelationAttr(attrgroupId);
+        return R.ok().put("data", entities);
+    }
+    @GetMapping("/{attrgroupId}/noattr/relation")
+    public R attrNoRelation(@PathVariable("attrgroupId") Long attrgroupId,
+                            @RequestParam Map<String, Object> params) {
+        PageUtils page = attrService.getNoRelationAttr(params, attrgroupId);
+        return R.ok().put("page", page);
+    }
+    @PostMapping("/attr/relation/delete")
+    public R deleteRelation(@RequestBody AttrGroupRelationVo[] attrGroupRelationVos) {
+        attrGroupService.deleteRelation(attrGroupRelationVos);
+        return R.ok();
+    }
+
+    @PostMapping("/attr/relation")
+    public R addRelation(@RequestBody List<AttrGroupRelationVo> vos) {
+        relationService.saveBatch(vos);
+        return R.ok();
+    }
+
+
 
 }

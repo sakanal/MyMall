@@ -2,8 +2,9 @@ package com.sakanal.product.controller;
 
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
-import com.sakanal.product.entity.AttrEntity;
 import com.sakanal.product.service.AttrService;
+import com.sakanal.product.vo.AttrVo;
+import com.sakanal.product.vo.resp.AttrRespVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,21 @@ public class AttrController {
         return R.ok().put("page", page);
     }
 
+    /**
+     * 获取基本属性和销售属性
+     * @param params 基本分页参数和searchKey
+     * @param attrType 1：基本属性，0：销售属性
+     * @param catelogId 分类id
+     * @return page<ArrtRespVo>
+     */
+    @GetMapping("/{attrType}/list/{catelogId}")
+    public R baseAttrList(@RequestParam Map<String, Object> params,
+                          @PathVariable("attrType") String attrType,
+                          @PathVariable("catelogId") Long catelogId) {
+        PageUtils page = attrService.queryBaseAttrPage(params,attrType, catelogId);
+        return R.ok().put("page", page);
+    }
+
 
     /**
      * 信息
@@ -45,9 +61,9 @@ public class AttrController {
     @RequestMapping("/info/{attrId}")
     //@RequiresPermissions("product:attr:info")
     public R info(@PathVariable("attrId") Long attrId){
-		AttrEntity attr = attrService.getById(attrId);
-
-        return R.ok().put("attr", attr);
+//		AttrEntity attr = attrService.getById(attrId);
+        AttrRespVo respVo = attrService.getAttrInfo(attrId);
+        return R.ok().put("attr", respVo);
     }
 
     /**
@@ -55,8 +71,8 @@ public class AttrController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("product:attr:save")
-    public R save(@RequestBody AttrEntity attr){
-		attrService.save(attr);
+    public R save(@RequestBody AttrVo attr){
+		attrService.saveAttr(attr);
 
         return R.ok();
     }
@@ -65,12 +81,13 @@ public class AttrController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("product:attr:update")
-    public R update(@RequestBody AttrEntity attr){
-		attrService.updateById(attr);
+// @RequiresPermissions("product:attr:update")
+    public R update(@RequestBody AttrVo attr) {
+        attrService.updateAttr(attr);
 
         return R.ok();
     }
+
 
     /**
      * 删除
