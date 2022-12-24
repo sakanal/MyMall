@@ -77,7 +77,6 @@ export default {
       this.dialogImageUrl = file.url
     },
     beforeUpload (file) {
-      console.log(file)
       let _self = this
       return new Promise((resolve, reject) => {
         policy()
@@ -104,6 +103,7 @@ export default {
           })
       })
     },
+    // TODO: Cannot set properties of null (setting 'status'))
     handleUploadSuccess (res, file) {
       this.fileKeys.forEach(fileKey => {
         this.fileList.push({
@@ -118,6 +118,7 @@ export default {
       //   url: this.dataObj.host + '/' + this.dataObj.key.replace('${filename}', file.name)
       // })
       this.emitInput(this.fileList)
+      this.fileKeys = []
     },
     handleExceed (files, fileList) {
       this.$message({
