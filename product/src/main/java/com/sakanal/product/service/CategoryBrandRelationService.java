@@ -3,7 +3,9 @@ package com.sakanal.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.product.entity.CategoryBrandRelationEntity;
+import com.sakanal.product.vo.resp.BrandRespVo;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,5 +24,7 @@ public interface CategoryBrandRelationService extends IService<CategoryBrandRela
     void updateBrand(Long brandId, String name);
 
     void updateCategory(Long catId, String name);
+
+    List<BrandRespVo> getByCatId(Long catId);
 }
 

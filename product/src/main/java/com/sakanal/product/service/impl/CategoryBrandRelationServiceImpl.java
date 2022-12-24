@@ -13,10 +13,14 @@ import com.sakanal.product.entity.BrandEntity;
 import com.sakanal.product.entity.CategoryBrandRelationEntity;
 import com.sakanal.product.entity.CategoryEntity;
 import com.sakanal.product.service.CategoryBrandRelationService;
+import com.sakanal.product.vo.resp.BrandRespVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Service("categoryBrandRelationService")
@@ -71,6 +75,19 @@ public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandR
         relationEntity.setCatelogId(catId);
         relationEntity.setCatelogName(name);
         this.update(relationEntity, new UpdateWrapper<CategoryBrandRelationEntity>().eq("catelog_id", catId));
+    }
+
+
+    @Override
+    public List<BrandRespVo> getByCatId(Long catId) {
+        List<CategoryBrandRelationEntity> entities = this.list(new QueryWrapper<CategoryBrandRelationEntity>()
+                .eq("catelog_id", catId));
+
+        return entities.stream().map(item -> {
+            BrandRespVo brandRespVo = new BrandRespVo();
+            BeanUtils.copyProperties(item, brandRespVo);
+            return brandRespVo;
+        }).collect(Collectors.toList());
     }
 
 

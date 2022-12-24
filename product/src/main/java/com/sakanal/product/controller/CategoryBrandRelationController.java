@@ -5,6 +5,7 @@ import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
 import com.sakanal.product.entity.CategoryBrandRelationEntity;
 import com.sakanal.product.service.CategoryBrandRelationService;
+import com.sakanal.product.vo.resp.BrandRespVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
@@ -94,6 +95,14 @@ public class CategoryBrandRelationController {
 		categoryBrandRelationService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
+    }
+
+
+    @GetMapping("/brands/list")
+    public R relationBrandsList(@RequestParam(value = "catId", required = true) Long catId) {
+        List<BrandRespVo> vos =  categoryBrandRelationService.getByCatId(catId);
+
+        return R.ok().put("data", vos);
     }
 
 }

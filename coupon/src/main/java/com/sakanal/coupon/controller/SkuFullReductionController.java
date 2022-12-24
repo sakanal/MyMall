@@ -1,5 +1,6 @@
 package com.sakanal.coupon.controller;
 
+import com.sakanal.common.bean.to.SkuReductionTo;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
 import com.sakanal.coupon.entity.SkuFullReductionEntity;
@@ -80,6 +81,13 @@ public class SkuFullReductionController {
     public R delete(@RequestBody Long[] ids){
 		skuFullReductionService.removeByIds(Arrays.asList(ids));
 
+        return R.ok();
+    }
+
+
+    @PostMapping("/saveinfo")
+    public R saveInfo(@RequestBody SkuReductionTo reductionTo) {
+        skuFullReductionService.saveSkuReduction(reductionTo);
         return R.ok();
     }
 
