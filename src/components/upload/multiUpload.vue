@@ -1,6 +1,7 @@
 <template>
   <div>
     <el-upload
+      multiple
       :action="dataObj.host"
       :data="dataObj"
       list-type="picture-card"
@@ -45,7 +46,8 @@ export default {
         uuid: ''
       },
       dialogVisible: false,
-      dialogImageUrl: null
+      dialogImageUrl: null,
+      fileKeys: []
     }
   },
   computed: {
@@ -75,6 +77,7 @@ export default {
       this.dialogImageUrl = file.url
     },
     beforeUpload (file) {
+      console.log(file)
       let _self = this
       return new Promise((resolve, reject) => {
         policy()
@@ -85,7 +88,11 @@ export default {
             _self.dataObj.signature = response.data.signature
             _self.dataObj.ossaccessKeyId = response.data.accessKey
             // eslint-disable-next-line no-template-curly-in-string
-            _self.dataObj.key = response.data.dir + '/' + getUUID() + '_${filename}'
+            _self.dataObj.key = response.data.dir + getUUID() + '_${filename}'
+            _self.fileKeys.push({
+              // eslint-disable-next-line no-template-curly-in-string
+              key: this.dataObj.key.replace('${filename}', file.name)
+            })
             _self.dataObj.dir = response.data.dir
             _self.dataObj.host = response.data.host
             resolve(true)
@@ -98,12 +105,18 @@ export default {
       })
     },
     handleUploadSuccess (res, file) {
-      this.fileList.push({
-        name: file.name,
-        // url: this.dataObj.host + "/" + this.dataObj.dir + "/" + file.name； 替换${filename}为真正的文件名
-        // eslint-disable-next-line no-template-curly-in-string
-        url: this.dataObj.host + '/' + this.dataObj.key.replace('${filename}', file.name)
+      this.fileKeys.forEach(fileKey => {
+        this.fileList.push({
+          name: file.name,
+          url: this.dataObj.host + '/' + fileKey.key
+        })
       })
+      // this.fileList.push({
+      //   name: file.name,
+      //   // url: this.dataObj.host + "/" + this.dataObj.dir + "/" + file.name； 替换${filename}为真正的文件名
+      //   // eslint-disable-next-line no-template-curly-in-string
+      //   url: this.dataObj.host + '/' + this.dataObj.key.replace('${filename}', file.name)
+      // })
       this.emitInput(this.fileList)
     },
     handleExceed (files, fileList) {
