@@ -32,6 +32,10 @@ export default {
     maxCount: {
       type: Number,
       default: 30
+    },
+    fileDir: {
+      type: String,
+      default: ''
     }
   },
   data () {
@@ -87,7 +91,7 @@ export default {
             _self.dataObj.signature = response.data.signature
             _self.dataObj.ossaccessKeyId = response.data.accessKey
             // eslint-disable-next-line no-template-curly-in-string
-            _self.dataObj.key = response.data.dir + getUUID() + '_${filename}'
+            _self.dataObj.key = response.data.dir + this.fileDir + getUUID() + '_${filename}'
             _self.fileKeys.push({
               // eslint-disable-next-line no-template-curly-in-string
               key: this.dataObj.key.replace('${filename}', file.name)

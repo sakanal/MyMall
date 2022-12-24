@@ -25,7 +25,11 @@ import { getUUID } from '@/utils'
 export default {
   name: 'singleUpload',
   props: {
-    value: String
+    value: String,
+    fileDir: {
+      type: String,
+      default: ''
+    }
   },
   computed: {
     imageUrl () {
@@ -87,7 +91,7 @@ export default {
           _self.dataObj.signature = response.data.signature
           _self.dataObj.ossaccessKeyId = response.data.accessKey
           // eslint-disable-next-line no-template-curly-in-string
-          _self.dataObj.key = response.data.dir + getUUID() + '_${filename}'
+          _self.dataObj.key = response.data.dir + this.fileDir + getUUID() + '_${filename}'
           _self.dataObj.dir = response.data.dir
           _self.dataObj.host = response.data.host
           resolve(true)
