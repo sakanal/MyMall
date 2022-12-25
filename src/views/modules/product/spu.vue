@@ -20,7 +20,7 @@
             <el-input style="width:160px" v-model="dataForm.key" clearable></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="searchSpuInfo">查询</el-button>
+            <el-button type="primary" @click.prevent="searchSpuInfo">查询</el-button>
           </el-form-item>
         </el-form>
       </el-col>
@@ -66,7 +66,7 @@ export default {
   methods: {
     searchSpuInfo () {
       console.log('搜索条件', this.dataForm)
-      this.PubSub.publish('dataForm', this.dataForm)
+      PubSub.publish('dataForm', this.dataForm)
     }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
