@@ -2,7 +2,9 @@ package com.sakanal.product.controller;
 
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
+import com.sakanal.product.entity.ProductAttrValueEntity;
 import com.sakanal.product.service.AttrService;
+import com.sakanal.product.service.ProductAttrValueService;
 import com.sakanal.product.vo.AttrVo;
 import com.sakanal.product.vo.resp.AttrRespVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -27,6 +30,8 @@ import java.util.Map;
 public class AttrController {
     @Autowired
     private AttrService attrService;
+    @Autowired
+    private ProductAttrValueService productAttrValueService;
 
     /**
      * 列表
@@ -52,6 +57,12 @@ public class AttrController {
                           @PathVariable("catelogId") Long catelogId) {
         PageUtils page = attrService.queryBaseAttrPage(params,attrType, catelogId);
         return R.ok().put("page", page);
+    }
+
+    @GetMapping("/base/listforspu/{spuId}")
+    public R baseAttrListForSpu(@PathVariable("spuId") Long spuId) {
+        List<ProductAttrValueEntity> entityList =  productAttrValueService.baseAttrListForSpu(spuId);
+        return R.ok().put("data", entityList);
     }
 
 
@@ -97,6 +108,12 @@ public class AttrController {
     public R delete(@RequestBody Long[] attrIds){
 		attrService.removeByIds(Arrays.asList(attrIds));
 
+        return R.ok();
+    }
+    @PostMapping("/update/{spuId}")
+    public R updateSpuAttr(@PathVariable("spuId") Long spuId,
+                           @RequestBody List<ProductAttrValueEntity> entityList) {
+        productAttrValueService.updateSpuAttr(spuId, entityList);
         return R.ok();
     }
 

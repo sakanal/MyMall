@@ -2,14 +2,14 @@ package com.sakanal.product.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
-import lombok.Data;
+import java.util.Objects;
 
 /**
  * spu属性值
- * 
+ *
  * @author sakanal
  * @email sakanal9527@gmail.com
  * @date 2022-12-21 12:40:44
@@ -49,4 +49,16 @@ public class ProductAttrValueEntity implements Serializable {
 	 */
 	private Integer quickShow;
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		ProductAttrValueEntity that = (ProductAttrValueEntity) o;
+		return spuId.equals(that.spuId) && attrId.equals(that.attrId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(spuId, attrId);
+	}
 }
