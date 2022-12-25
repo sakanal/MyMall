@@ -4,11 +4,14 @@ import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
 import com.sakanal.ware.entity.PurchaseEntity;
 import com.sakanal.ware.service.PurchaseService;
+import com.sakanal.ware.vo.MergeVo;
+import com.sakanal.ware.vo.PurchaseDoneVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -82,5 +85,31 @@ public class PurchaseController {
 
         return R.ok();
     }
+
+    @RequestMapping("/unreceive/list")
+    public R unReceiveList(@RequestParam Map<String, Object> params) {
+        PageUtils page = purchaseService.queryPageUnReceivePurchase(params);
+
+        return R.ok().put("page", page);
+    }
+    @RequestMapping("/merge")
+    public R merge(@RequestBody MergeVo mergeVo) {
+
+        purchaseService.mergePurchase(mergeVo);
+        return R.ok();
+    }
+    @PostMapping("/received")
+    public R received(@RequestBody List<Long> ids) {
+        purchaseService.received(ids);
+        return R.ok();
+    }
+    @PostMapping("/done")
+    public R finish(@RequestBody PurchaseDoneVo doneVo) {
+        purchaseService.done(doneVo);
+        return R.ok();
+    }
+
+
+
 
 }

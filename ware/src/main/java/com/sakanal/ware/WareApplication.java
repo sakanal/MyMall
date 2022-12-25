@@ -1,11 +1,14 @@
 package com.sakanal.ware;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.ComponentScan;
 
-@MapperScan("com.sakanal.ware.dao")
+@ComponentScan("com.sakanal")
+//@MapperScan("com.sakanal.ware.dao")
+@EnableFeignClients(basePackages = "com.sakanal.common.feign")
 @EnableDiscoveryClient
 @SpringBootApplication
 public class WareApplication {
