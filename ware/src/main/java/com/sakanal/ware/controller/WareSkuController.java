@@ -1,5 +1,6 @@
 package com.sakanal.ware.controller;
 
+import com.sakanal.common.bean.to.SkuHasStockVo;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
 import com.sakanal.ware.entity.WareSkuEntity;
@@ -9,6 +10,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -81,6 +83,15 @@ public class WareSkuController {
 		wareSkuService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
+    }
+
+    // 查询sku是否有库存
+    @RequestMapping("/hasStock")
+    public R getSkuHasStock(@RequestBody List<Long> skuIds){
+
+        List<SkuHasStockVo> vos = wareSkuService.getSkuHasStock(skuIds);
+
+        return R.ok().put("data", vos);
     }
 
 }

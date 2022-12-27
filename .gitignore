@@ -43,3 +43,4 @@ build/
 **/docker-compose.yml
 
 **/.gitignore
+/search/src/main/resources/http_ca.crt
