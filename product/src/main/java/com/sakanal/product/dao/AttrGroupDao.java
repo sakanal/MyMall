@@ -3,6 +3,7 @@ package com.sakanal.product.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.sakanal.product.entity.AttrAttrgroupRelationEntity;
 import com.sakanal.product.entity.AttrGroupEntity;
+import com.sakanal.product.vo.SkuItemVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,4 +20,6 @@ import java.util.List;
 public interface AttrGroupDao extends BaseMapper<AttrGroupEntity> {
 
     void deleteBatchRelation(@Param("entities") List<AttrAttrgroupRelationEntity> relationEntityList);
+
+    List<SkuItemVo.SpuItemAttrGroupVo> getAttrGroupWithAttrsBySpuId(@Param("spuId") Long spuId, @Param("catalogId") Long catalogId);
 }

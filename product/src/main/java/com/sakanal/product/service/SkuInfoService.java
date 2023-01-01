@@ -3,6 +3,7 @@ package com.sakanal.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.product.entity.SkuInfoEntity;
+import com.sakanal.product.vo.SkuItemVo;
 
 import java.util.List;
 import java.util.Map;
@@ -21,5 +22,7 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
     PageUtils queryPageByCondition(Map<String, Object> params);
 
     List<SkuInfoEntity> getSkusBySpuId(Long spuId);
+
+    SkuItemVo item(Long skuId);
 }
 

@@ -14,4 +14,33 @@
     </resultMap>
 
 
+    <resultMap id="skuItemSaleAttrVo" type="com.sakanal.product.vo.SkuItemVo$SkuItemSaleAttrVo">
+        <result property="attrId" column="attr_id"/>
+        <result property="attrName" column="attr_name"/>
+        <collection property="attrValues" ofType="com.sakanal.product.vo.SkuItemVo$AttrValueWithSkuIdVo">
+            <result property="attrValue" column="attr_value"/>
+            <result property="skuIds" column="sku_ids"/>
+        </collection>
+    </resultMap>
+
+    <select id="getSaleAttrsBySpuId" resultMap="skuItemSaleAttrVo">
+        SELECT ssav.attr_id,
+               ssav.attr_name,
+               ssav.attr_value,
+               GROUP_CONCAT(distinct ssav.sku_id) sku_ids
+        from pms_sku_info info
+                 LEFT JOIN pms_sku_sale_attr_value ssav on info.sku_id = ssav.sku_id
+        WHERE info.spu_id = #{spuId}
+        group by ssav.attr_id,ssav.attr_name,ssav.attr_value
+    </select>
+
+    <select id="getSkuSaleAttrValuesAsStringList" resultType="java.lang.String">
+        SELECT
+            CONCAT( attr_name, '：', attr_value )
+        FROM
+            pms_sku_sale_attr_value
+        WHERE
+            sku_id = #{skuId}
+    </select>
+
 </mapper>

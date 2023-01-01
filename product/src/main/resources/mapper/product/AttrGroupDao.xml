@@ -18,6 +18,27 @@
                 (attr_id=#{entity.attrId} and attr_group_id=#{entity.attrGroupId})
             </foreach>
     </delete>
+    <resultMap id="spuItemAttrGroupVo" type="com.sakanal.product.vo.SkuItemVo$SpuItemAttrGroupVo">
+        <result column="attr_group_name" property="groupName"/>
+        <collection property="attrs" ofType="com.sakanal.product.vo.SkuItemVo$SpuBaseAttrVo">
+            <result column="attr_id" property="attrId"/>
+            <result column="attr_name" property="attrName"/>
+            <result column="attr_value" property="attrValue"/>
+        </collection>
+    </resultMap>
+
+    <select id="getAttrGroupWithAttrsBySpuId" resultMap="spuItemAttrGroupVo">
+        SELECT ag.attr_group_id,
+               attr_group_name ,
+               aar.attr_id,
+               attr.attr_name ,
+               pav.attr_value
+        from pms_attr_group ag
+                 LEFT JOIN pms_attr_attrgroup_relation aar on aar.attr_group_id = ag.attr_group_id
+                 LEFT JOIN pms_attr attr on attr.attr_id = aar.attr_id
+                 LEFT JOIN pms_product_attr_value pav on pav.attr_id = attr.attr_id
+        WHERE ag.catelog_id = #{catalogId} and pav.spu_id = #{spuId}
+    </select>
 
 
 </mapper>
