@@ -9,6 +9,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -81,6 +82,17 @@ public class SkuSaleAttrValueController {
 		skuSaleAttrValueService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
+    }
+
+
+    /**
+     * 根据skuId查询pms_sku_sale_attr_value表中的信息
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value = "/stringList/{skuId}")
+    List<String> getSkuSaleAttrValues(@PathVariable("skuId") Long skuId){
+        return skuSaleAttrValueService.getSkuSaleAttrValuesAsStringList(skuId);
     }
 
 }

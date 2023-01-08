@@ -23,6 +23,7 @@
         <module>third-party</module>
         <module>search</module>
         <module>auth</module>
+        <module>cart</module>
     </modules>
 
 

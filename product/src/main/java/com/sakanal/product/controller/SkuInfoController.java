@@ -1,5 +1,6 @@
 package com.sakanal.product.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
 import com.sakanal.product.entity.SkuInfoEntity;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -79,6 +81,20 @@ public class SkuInfoController {
 		skuInfoService.removeByIds(Arrays.asList(skuIds));
 
         return R.ok();
+    }
+
+    /**
+     * 根据skuId查询当前商品的最新价格
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value = "/{skuId}/price")
+    BigDecimal getPrice(@PathVariable("skuId") Long skuId){
+        SkuInfoEntity skuInfoEntity = skuInfoService.getOne(new LambdaQueryWrapper<SkuInfoEntity>().eq(SkuInfoEntity::getSkuId, skuId));
+        if (skuInfoEntity!=null){
+            return skuInfoEntity.getPrice();
+        }
+        return null;
     }
 
 }
