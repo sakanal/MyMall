@@ -1,6 +1,9 @@
 package com.sakanal.member.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sakanal.common.bean.vo.SocialUser;
+import com.sakanal.common.bean.vo.UserLoginVo;
+import com.sakanal.common.bean.vo.UserRegisterVo;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.member.entity.MemberEntity;
 
@@ -16,5 +19,16 @@ import java.util.Map;
 public interface MemberService extends IService<MemberEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    void register(UserRegisterVo vo);
+
+    void checkPhoneUnique(String phone);
+    void checkUserNameUnique(String userName);
+
+    MemberEntity login(UserLoginVo vo);
+
+    MemberEntity login(SocialUser socialUser) throws Exception;
+
+    MemberEntity login(String accessTokenInfo);
 }
 

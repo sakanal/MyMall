@@ -22,6 +22,7 @@
         <module>gateway</module>
         <module>third-party</module>
         <module>search</module>
+        <module>auth</module>
     </modules>
 
 

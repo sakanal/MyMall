@@ -1,4 +1,4 @@
-package com.sakanal.member.entity;
+package com.sakanal.common.bean.vo;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;

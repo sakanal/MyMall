@@ -1,5 +1,10 @@
 package com.sakanal.member.controller;
 
+import com.sakanal.common.bean.vo.SocialUser;
+import com.sakanal.common.bean.vo.UserLoginVo;
+import com.sakanal.common.bean.vo.UserRegisterVo;
+import com.sakanal.common.exception.BizCodeEnum;
+import com.sakanal.common.exception.RRException;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
 import com.sakanal.member.entity.MemberEntity;
@@ -83,4 +88,52 @@ public class MemberController {
         return R.ok();
     }
 
+
+    @PostMapping("/register")
+    R register(@RequestBody UserRegisterVo vo){
+        try {
+            memberService.register(vo);
+        } catch (RRException e) {
+            return R.error(e.getCode(),e.getMsg());
+        }
+        return R.ok();
+    }
+
+
+    @PostMapping(value = "/login")
+    public R login(@RequestBody UserLoginVo vo) {
+
+        MemberEntity memberEntity = memberService.login(vo);
+
+        if (memberEntity != null) {
+            memberEntity.setCreateTime(null);
+            return R.ok().setData(memberEntity);
+        } else {
+            return R.error(BizCodeEnum.LOGIN_ACCOUNT_PASSWORD_INVALID.getCode(),BizCodeEnum.LOGIN_ACCOUNT_PASSWORD_INVALID.getMsg());
+        }
+    }
+
+
+    @PostMapping(value = "/oauth2/login")
+    public R oauthLogin(@RequestBody SocialUser socialUser) throws Exception {
+
+        MemberEntity memberEntity = memberService.login(socialUser);
+
+        if (memberEntity != null) {
+            return R.ok().setData(memberEntity);
+        } else {
+            return R.error(BizCodeEnum.LOGIN_ACCOUNT_PASSWORD_INVALID.getCode(),BizCodeEnum.LOGIN_ACCOUNT_PASSWORD_INVALID.getMsg());
+        }
+    }
+
+    @PostMapping(value = "/weixin/login")
+    public R weixinLogin(@RequestParam("accessTokenInfo") String accessTokenInfo) {
+
+        MemberEntity memberEntity = memberService.login(accessTokenInfo);
+        if (memberEntity != null) {
+            return R.ok().setData(memberEntity);
+        } else {
+            return R.error(BizCodeEnum.LOGIN_ACCOUNT_PASSWORD_INVALID.getCode(),BizCodeEnum.LOGIN_ACCOUNT_PASSWORD_INVALID.getMsg());
+        }
+    }
 }
