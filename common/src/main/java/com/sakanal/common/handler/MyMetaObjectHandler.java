@@ -15,10 +15,12 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         this.strictInsertFill(metaObject,"createTime", Date.class,new Date());
 
         this.strictUpdateFill(metaObject,"updateTime", Date.class,new Date());
+        this.strictUpdateFill(metaObject,"modifyTime", Date.class,new Date());
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
         this.strictUpdateFill(metaObject,"updateTime", Date.class,new Date());
+        this.strictUpdateFill(metaObject,"modifyTime", Date.class,new Date());
     }
 }

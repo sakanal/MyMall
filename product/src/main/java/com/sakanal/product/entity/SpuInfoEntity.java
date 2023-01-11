@@ -62,4 +62,6 @@ public class SpuInfoEntity implements Serializable {
 	@TableField(fill = FieldFill.INSERT_UPDATE)
 	private Date updateTime;
 
+	@TableField(exist = false)
+	private String brandName;
 }

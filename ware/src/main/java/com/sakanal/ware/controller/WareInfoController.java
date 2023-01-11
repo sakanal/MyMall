@@ -1,5 +1,6 @@
 package com.sakanal.ware.controller;
 
+import com.sakanal.common.bean.vo.FareVo;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
 import com.sakanal.ware.entity.WareInfoEntity;
@@ -26,6 +27,15 @@ import java.util.Map;
 public class WareInfoController {
     @Autowired
     private WareInfoService wareInfoService;
+
+    /**
+     * 获取运费信息
+     */
+    @GetMapping(value = "/fare")
+    public R getFare(@RequestParam("addrId") Long addrId) {
+        FareVo fare = wareInfoService.getFare(addrId);
+        return R.ok().setData(fare);
+    }
 
     /**
      * 列表

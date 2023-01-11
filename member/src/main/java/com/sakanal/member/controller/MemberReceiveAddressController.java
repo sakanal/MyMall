@@ -1,5 +1,6 @@
 package com.sakanal.member.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.R;
 import com.sakanal.member.entity.MemberReceiveAddressEntity;
@@ -9,6 +10,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -81,6 +83,15 @@ public class MemberReceiveAddressController {
 		memberReceiveAddressService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
+    }
+    @GetMapping("/{memberId}/addresses")
+    public List<MemberReceiveAddressEntity> getAddress(@PathVariable("memberId") Long memberId){
+        return memberReceiveAddressService.list(new LambdaQueryWrapper<MemberReceiveAddressEntity>().eq(MemberReceiveAddressEntity::getMemberId,memberId));
+    }
+
+    @GetMapping("/address/{addressId}")
+    public MemberReceiveAddressEntity getAddressInfo(@PathVariable("addressId") Long addressId){
+        return memberReceiveAddressService.getById(addressId);
     }
 
 }

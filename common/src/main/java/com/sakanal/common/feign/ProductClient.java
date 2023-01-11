@@ -1,5 +1,6 @@
 package com.sakanal.common.feign;
 
+import com.sakanal.common.bean.entity.SpuInfoEntity;
 import com.sakanal.common.utils.R;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,5 +44,11 @@ public interface ProductClient {
      */
     @GetMapping(value = "/product/skuinfo/{skuId}/price")
     BigDecimal getPrice(@PathVariable("skuId") Long skuId);
+
+    /**
+     * 根据skuId查询spu的信息
+     */
+    @GetMapping(value = "/product/spuinfo/skuId/{skuId}")
+    SpuInfoEntity getSpuInfoBySkuId(@PathVariable("skuId") Long skuId);
 }
 

@@ -6,8 +6,45 @@ spring:
     url: jdbc:mysql://192.168.38.131:3306/gulimall_oms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
+  mvc:
+    format:
+      date: yyyy-MM-dd HH:mm:ss
+      date-time: yyyy-MM-dd HH:mm:ss
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: auto
+seata:
+  tx-service-group: orderGroup
+  service:
+    vgroup-mapping:
+      orderGroup: default
+  enabled: true
+  enable-auto-data-source-proxy: true
+  config:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+      namespace: 7956d675-8b18-49c0-bece-b4ef461775fd
+      group: SEATA_GROUP
+      data-id: seataServer.properties
+      username: nacos
+      password: nacos
+  registry:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+      namespace: 7956d675-8b18-49c0-bece-b4ef461775fd
+      group: SEATA_GROUP
+      application: seata-server
+      username: nacos
+      password: nacos
+alipay:
+  app-id: 2021000122606458
+  merchant-private-key: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCUPgMUsGzNqmRisXt5TvhmKiA6zRImylWCoBg+vBHBqzcI9S/AkTJgju7FeWNaFEOWLaZp9PRKK4yvMsxfIdfuVUlFbsKjB2KcE8M0xxTIrUrLFLQAVXC/WztfBO3hW6UttUUnTalxg9NLCetnRGwDBZw9VIlIishH7tL7GoxZR9mtO0Mjjbwk/il08KBF95QRRi9hfB8Ic8W9c52m10jFnu00ko0cXyla774xzOi5NFPWCqVl+uSCAqULRgEY4d/D4LG7KQ316fB2cNF1UyA2ZLdm7VMSV6SxxeE87svYRMkcB3O2bdIeaeZlPjbOt6HmDwIFqLQ/DUjQgx8TrzWPAgMBAAECggEAEwOZNZAjhIW0dow5QCgG6GPC2ofvKhaNvUF3mqRYyrSBTJ7WTybQhV4P9jhJrAYpXRvh2nlW1CSd2OL1H8ahgapiyYsZX/vUhBxsz1oxqkO/8ihnphtPaNv00404Tc2JdEFp606kyzCTa26MSSSXjhOsJJmxOiLC6acSXK7dDZ5dnMxMlbnejyk7Hodm6Qs4qPZR1wGHxQpjQiNh6ugg+bJcC4v6u7n8tr0TmYu8MgMNlTJrY3d2A0vUTWIPKsNU979yKJ/HAaRvU+PlpHbgsZ4qsCix+/A8rxmliPi1R5PmQTUfX3q9rLBEDYLCGtwjrPX09r9OfDdxPKN6ds0PAQKBgQDNIo21/5nQLXG1wQIUNOvBk0Dnm6rmwqI0FhWLAuM6LV8xBYvyJG7ZOMRCkUCaw7AhP1tEOsdUWYUs1S7YaGkyMfICvpZLsCbDzXP5KAXsKqd4rhg1JgpKtfssXDMkH0ZABCAkqKVFkQ3w7siTRZlnTF7geHp456mNMqOm7rRMTwKBgQC5AA1Robc/cRF36bLQBv4BQ8MMSQi+vfyu71edYc4Nr7gZUPOIR0fyjirsp7HVEAjelnD9tUGG8Bfiw9B85rnb0/HqIILvDuaIcJwTMJj/5Ixymz/iwuCcNjGAWwfYMohRBgPrFYPuNNxFcWEfzSVWxISk+K0wdATafroJpbHywQKBgHthfw6qb98wliYVsqRouCwz32Pu0zn8cwcVCVwVHoqNY6Xeii/YDfwFErZfGxZ7AOLecox1NhLbzSgMCSMMmckhFUjlTQy1JHu8hTalBfroJNaHD/RXrvUEw9AInJHrZZt3X8Xs0YsoFdSGKom54OyqmJ42mKND400T2i67gCItAoGBAKxktwSd7RRqefvDRAUErwhgq86z9DlC88fUc1HOhWRNngHBZN9WhV4rSyay8k14nrtFd8+Ea6ah77A6BvuNSh7mt2UUnM7GlN8KCPb872ZuBM77iyH1tbb77U8OBRZbqJnQQDB+IS4GBkmT6Qzob2YWxQCyVzlys98j/prk1BlBAoGBALFyfp10AdeKTBziYGdboahckGCMbquBhxSuHQVbOI19cXBb0j9hZK47Wpm+JQQiqMwMm6ybdQuHiRjZty5fUTWqwNoGKc5wQbylmFCiRx41d60l6EIqXCTRkhKVcqHpxc2Loqi7n01fN28uIRQNmFArCmSja/8Ynz9Rm4qI2log
+  alipay-public-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmTjsCqFtC/S9u4oR2HeWXsgQjst2jgGUDhHkJlJQRxXiFW/byUIcRIYB0G0HM3+rlBifkbLATqdEw72zNgp+wB6UqXuxNdGsqkK4bdul9RcqrTdobNHdwfCwwoOxfZRVBis9YoFYUIy0bVsvpCsPeiQAHXTJXUJf8pBxm/NjGtAZu+LtoLm7WgPdtNcNLCiVmo5SAMESnGNP9OnObfDrpeFyKA33YO5JESOZugBV5olLknC8aPczwjDw6avMFCFbfLw5JtGCm1MAiKy5o6JT87LMPe4oohlY8D2IFeJpDpFUV3x28N5zoxBdF7UymNXCuMDbUM9+RTl3qBIxDv6O8wIDAQAB
+  notify-url: https://677p1u1823.goho.co/payed/notify
+  return-url: http://member.gulimall.com:9001/memberOrder.html
+  charset: UTF-8
+  gateway-url: https://openapi.alipaydev.com/gateway.do

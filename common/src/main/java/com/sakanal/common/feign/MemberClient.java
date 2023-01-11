@@ -1,13 +1,12 @@
 package com.sakanal.common.feign;
 
+import com.sakanal.common.bean.vo.MemberAddressVo;
 import com.sakanal.common.bean.vo.SocialUser;
 import com.sakanal.common.bean.vo.UserLoginVo;
 import com.sakanal.common.bean.vo.UserRegisterVo;
 import com.sakanal.common.utils.R;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @FeignClient("memberService")
 public interface MemberClient {
@@ -23,4 +22,7 @@ public interface MemberClient {
 
     @PostMapping(value = "/member/member/weixin/login")
     R weixinLogin(@RequestParam("accessTokenInfo") String accessTokenInfo);
+
+    @GetMapping("/member/memberreceiveaddress/address/{addressId}")
+    public MemberAddressVo getAddressInfo(@PathVariable("addressId") Long addressId);
 }

@@ -1,6 +1,7 @@
 package com.sakanal.ware.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sakanal.common.bean.vo.FareVo;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.ware.entity.WareInfoEntity;
 
@@ -16,5 +17,7 @@ import java.util.Map;
 public interface WareInfoService extends IService<WareInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    FareVo getFare(Long addrId);
 }
 
