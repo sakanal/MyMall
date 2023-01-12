@@ -9,6 +9,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -81,6 +82,17 @@ public class SeckillSessionController {
 		seckillSessionService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
+    }
+    /**
+     * 查询最近三天需要参加秒杀商品的信息
+     * @return
+     */
+    @GetMapping(value = "/Lates3DaySession")
+    public R getLates3DaySession() {
+
+        List<SeckillSessionEntity> seckillSessionEntities = seckillSessionService.getLates3DaySession();
+
+        return R.ok().setData(seckillSessionEntities);
     }
 
 }
