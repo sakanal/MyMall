@@ -1,0 +1,101 @@
+server:
+  port: 9527
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        # 解决双重跨域，剔除重复请求头
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials Vary, RETAIN_UNIQUE
+      routes:
+        # 默认前端项目发送的请求都带上api前缀，
+        ####################### 商品服务 ########################
+        - id: productService
+          uri: lb://productService
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
+        ####################### 优惠券服务 ########################
+        - id: couponService
+          uri: lb://couponService
+          predicates:
+            - Path=/api/coupon/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
+        ####################### 会员服务 ########################
+        - id: memberService
+          uri: lb://memberService
+          predicates:
+            - Path=/api/member/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
+        ####################### 订单服务 ########################
+        - id: orderService
+          uri: lb://orderService
+          predicates:
+            - Path=/api/order/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
+        ####################### 仓储服务 ########################
+        - id: wareService
+          uri: lb://wareService
+          predicates:
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
+
+        ####################### 第三方服务 ########################
+        - id: thirdParty
+          uri: lb://thirdParty
+          predicates:
+            - Path=/api/thirdParty/**
+          filters:
+            - RewritePath=/api/thirdParty/(?<segment>.*),/$\{segment}
+
+        ####################### 后台管理平台 ########################
+        - id: renrenFast
+          uri: lb://renrenFast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/admin/$\{segment}
+
+        ####################### 前台功能 ############################
+        - id: nginx_gateway_product
+          uri: lb://productService
+          predicates:
+            - Host= gulimall.com,item.gulimall.com
+        - id: nginx_gateway_search
+          uri: lb://searchService
+          predicates:
+            - Host= search.gulimall.com
+        - id: nginx_gateway_auth
+          uri: lb://authService
+          predicates:
+            - Host= auth.gulimall.com
+        - id: nginx_gateway_cart
+          uri: lb://cartService
+          predicates:
+            - Host= cart.gulimall.com
+        - id: nginx_gateway_order
+          uri: lb://orderService
+          predicates:
+            - Host= order.gulimall.com
+        - id: nginx_gateway_member
+          uri: lb://memberService
+          predicates:
+            - Host= member.gulimall.com
+        - id: nginx_gateway_coupon
+          uri: lb://couponService
+          predicates:
+            - Host= coupon.gulimall.com
+        - id: nginx_gateway_seckill
+          uri: lb://seckillService
+          predicates:
+            - Host= seckill.gulimall.com

@@ -1,0 +1,18 @@
+server:
+  port: 8050
+spring:
+  application:
+    name: thirdParty
+  cloud:
+    alicloud:
+      access-key: accessKey
+      secret-key: secrtKey
+      oss:
+        endpoint: endpoint
+        bucket: bucket
+      sms:
+        host: 阿里云市场host
+        path: /sms/smsSend
+        appcode: 阿里云市场appcode
+        sms-sign-id: 阿里云市场sms-sign-id
+        template-id: 阿里云市场template-id

@@ -1,5 +1,5 @@
 server:
-  port: 8030
+  port: 8100
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -19,6 +19,18 @@ spring:
     type: redis
   session:
     store-type: redis
+  rabbitmq:
+    host: 192.168.38.131
+    port: 5672
+    username: sakanal
+    password: RabbitMQqaz360782
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    template:
+      mandatory: true
+    listener:
+      simple:
+        acknowledge-mode: manual
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
@@ -28,7 +40,7 @@ mybatis-plus:
       logic-not-delete-value: 0
 logging:
   level:
-    com.sakanal.product: debug
+    com.sakanal.seckill: debug
 gulimall:
   thread:
     core-size: 20

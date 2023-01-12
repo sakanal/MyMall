@@ -1,13 +1,65 @@
 server:
-  port: 8050
+  port: 8040
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.38.131:3306/gulimall_wms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
+  jackson:
+    date-format: yyyy-MM-dd  HH:mm:ss
+    time-zone: Asia/Shanghai
+  redis:
+    port: 6379
+    host: 192.168.38.131
+    password: Redisqaz360782
+  cache:
+    type: redis
+  session:
+    store-type: redis
+  rabbitmq:
+    host: 192.168.38.131
+    port: 5672
+    username: sakanal
+    password: RabbitMQqaz360782
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    template:
+      mandatory: true
+    listener:
+      simple:
+        acknowledge-mode: manual
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: auto
+logging:
+  level:
+    com.sakanal.ware: debug
+
+# seata:
+#   tx-service-group: wareGroup
+#   service:
+#     vgroup-mapping:
+#       wareGroup: default
+#   enabled: true
+#   enable-auto-data-source-proxy: true
+#   config:
+#     type: nacos
+#     nacos:
+#       server-addr: localhost:8848
+#       namespace: 7956d675-8b18-49c0-bece-b4ef461775fd
+#       group: SEATA_GROUP
+#       data-id: seataServer.properties
+#       username: nacos
+#       password: nacos
+#   registry:
+#     type: nacos
+#     nacos:
+#       server-addr: localhost:8848
+#       namespace: 7956d675-8b18-49c0-bece-b4ef461775fd
+#       group: SEATA_GROUP
+#       application: seata-server
+#       username: nacos
+#       password: nacos

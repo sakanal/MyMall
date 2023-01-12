@@ -1,5 +1,5 @@
 server:
-  port: 8030
+  port: 8070
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -28,9 +28,9 @@ mybatis-plus:
       logic-not-delete-value: 0
 logging:
   level:
-    com.sakanal.product: debug
-gulimall:
-  thread:
-    core-size: 20
-    max-size: 200
-    keep-alive-time: 10
+    com.sakanal.auth: debug
+# gulimall:
+#   thread:
+#     core-size: 20
+#     max-size: 200
+#     keep-alive-time: 10

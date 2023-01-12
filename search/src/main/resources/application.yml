@@ -5,3 +5,12 @@ spring:
     uris: https://192.168.38.131:9200
     username: elastic
     password: elastic
+  thymeleaf:
+    cache: false
+  redis:
+    port: 6379
+    host: 192.168.38.131
+    password: Redisqaz360782
+logging:
+  level:
+    com.sakanal.search: debug
