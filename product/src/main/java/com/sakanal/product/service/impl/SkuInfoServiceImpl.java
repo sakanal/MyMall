@@ -1,14 +1,17 @@
 package com.sakanal.product.service.impl;
 
+import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sakanal.common.utils.PageUtils;
 import com.sakanal.common.utils.Query;
+import com.sakanal.common.utils.R;
 import com.sakanal.product.dao.SkuInfoDao;
 import com.sakanal.product.entity.SkuImagesEntity;
 import com.sakanal.product.entity.SkuInfoEntity;
 import com.sakanal.product.entity.SpuInfoDescEntity;
+import com.sakanal.product.feign.SeckillFeignService;
 import com.sakanal.product.service.*;
 import com.sakanal.product.vo.SkuItemVo;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +37,8 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
     private AttrGroupService attrGroupService;
     @Autowired
     private SkuSaleAttrValueService skuSaleAttrValueService;
+    @Autowired
+    private SeckillFeignService seckillFeignService;
     @Autowired
     private ThreadPoolExecutor executor;
 
@@ -127,28 +132,28 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
             List<SkuImagesEntity> skuImagesEntityList = imagesService.getImagesBySkuId(skuId);
             skuItemVo.setImages(skuImagesEntityList);
         }, executor);
-//
-//        CompletableFuture<Void> secKillFuture = CompletableFuture.runAsync(() -> {
-//            //3、远程调用查询当前sku是否参与秒杀优惠活动
-//            R skuSecKillInfo = secKillFeignService.getSkuSecKillInfo(skuId);
-//            if (skuSecKillInfo.getCode() == 0) {
-//                //查询成功
-//                SkuItemVo.SecKillSkuVo seckilInfoData = skuSecKillInfo.getData("data", new TypeReference<SkuItemVo.SecKillSkuVo>() {
-//                });
-//                skuItemVo.setSecKillSkuVo(seckilInfoData);
-//
-//                if (seckilInfoData != null) {
-//                    long currentTime = System.currentTimeMillis();
-//                    if (currentTime > seckilInfoData.getEndTime()) {
-//                        skuItemVo.setSecKillSkuVo(null);
-//                    }
-//                }
-//            }
-//        }, executor);
+
+        CompletableFuture<Void> secKillFuture = CompletableFuture.runAsync(() -> {
+            //3、远程调用查询当前sku是否参与秒杀优惠活动
+            R skuSecKillInfo = seckillFeignService.getSkuSeckilInfo(skuId);
+            if (skuSecKillInfo.getCode() == 0) {
+                //查询成功
+                SkuItemVo.SecKillSkuVo seckilInfoData = skuSecKillInfo.getData("data", new TypeReference<SkuItemVo.SecKillSkuVo>() {
+                });
+                skuItemVo.setSecKillSkuVo(seckilInfoData);
+
+                if (seckilInfoData != null) {
+                    long currentTime = System.currentTimeMillis();
+                    if (currentTime > seckilInfoData.getEndTime()) {
+                        skuItemVo.setSecKillSkuVo(null);
+                    }
+                }
+            }
+        }, executor);
 
         //等待所有任务都完成
         try {
-            CompletableFuture.allOf(saleAttrFuture,descFuture,attrGroupFuture,imgFuture).get();
+            CompletableFuture.allOf(saleAttrFuture,descFuture,attrGroupFuture,imgFuture,secKillFuture).get();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }

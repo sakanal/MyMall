@@ -22,7 +22,7 @@ public class MQConfig {
         HashMap<String, Object> argument = new HashMap<>();
         argument.put("x-dead-letter-exchange","order-event-exchange");//死信路由
         argument.put("x-dead-letter-routing-key","order.release.order");//死信路由键
-        argument.put("x-message-ttl",60000);//消息过期时间 1分钟
+        argument.put("x-message-ttl",600000);//消息过期时间 10分钟
 
         return new Queue("order.delay.queue",true,false,false,argument);
     }

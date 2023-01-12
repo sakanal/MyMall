@@ -687,7 +687,7 @@
 
 							<div class="box-btns-two"
 								 th:if="${item.secKillSkuVo != null && (#dates.createNow().getTime() >= item.secKillSkuVo.startTime && #dates.createNow().getTime() <= item.secKillSkuVo.endTime)}">
-								<a class="secKill" href="#"
+								<a class="seckill" href="#"
 								   th:attr="skuId=${item.info.skuId},sessionId=${item.secKillSkuVo.promotionSessionId},code=${item.secKillSkuVo.randomCode}">
 									立即抢购
 								</a>
@@ -1395,13 +1395,13 @@
 			return false;
 		});
 
-		$(".secKill").click(function () {
+		$(".seckill").click(function () {
 			var isLogin = [[${session.loginUser != null}]];     //true
 			if (isLogin) {
 				var killId = $(this).attr("sessionid") + "-" + $(this).attr("skuid");
 				var code = $(this).attr("code");
 				var num = $("#productNum").val();
-				location.href = "http://secKill.gulimall.com:9001/kill?killId=" + killId + "&key=" + code + "&num=" + num;
+				location.href = "http://seckill.gulimall.com:9001/kill?killId=" + killId + "&key=" + code + "&num=" + num;
 			} else {
 				alert("秒杀请先登录");
 			}

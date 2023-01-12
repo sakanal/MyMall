@@ -34,7 +34,7 @@ public class RabbitMQConfig {
         HashMap<String, Object> argument = new HashMap<>();
         argument.put("x-dead-letter-exchange","stock-event-exchange");//死信路由
         argument.put("x-dead-letter-routing-key","stock.release");//死信路由键
-        argument.put("x-message-ttl", 120000L);//消息过期时间 2分钟
+        argument.put("x-message-ttl", 1200000L);//消息过期时间 20分钟
         return new Queue("stock.delay.queue",true,false,false,argument);
     }
 
