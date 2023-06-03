@@ -1,0 +1,20 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "谷粒商城前台",
+  "author": "sakanal",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "axios": "^1.2.1",
+    "element-ui": "^2.15.12",
+    "js-cookie": "^3.0.1",
+    "nuxt": "^2.0.0"
+  }
+}
